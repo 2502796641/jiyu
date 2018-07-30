@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="@dimen/size_80dp"
+    android:padding="@dimen/size_10dp">
+    <TextView
+        android:id="@+id/tv_invite_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/string_invite_success"
+        android:layout_marginLeft="@dimen/size_15dp"
+        android:textSize="@dimen/text_14sp"
+        />
+
+
+    <TextView
+        android:id="@+id/tv_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="账户：12312311231"
+        android:layout_below="@+id/tv_invite_state"
+        android:layout_alignLeft="@+id/tv_invite_state"
+        android:layout_marginTop="@dimen/size_5dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_hashrate_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="算力+5"
+        android:layout_alignTop="@+id/tv_invite_state"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/size_15dp"/>
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2017-10-10  20:00:57"
+        android:layout_alignTop="@+id/tv_account"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/size_15dp"/>
+</RelativeLayout>

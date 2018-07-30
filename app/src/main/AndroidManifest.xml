@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.guang.jiyu">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <application
+        android:name=".jiyu.application.JIYUApp"
+        android:allowBackup="true"
+        android:icon="@mipmap/icon_jiyu_logo87"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".jiyu.activity.MainActivity"
+            android:hardwareAccelerated="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".jiyu.activity.ChangeNicknameActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".base.TestActivity"
+            android:screenOrientation="portrait" >
+
+
+        </activity>
+        <activity
+            android:name=".jiyu.activity.SettingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".jiyu.activity.BindNewMobileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".jiyu.activity.ChangeMobileNumberActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".jiyu.activity.ChangePwdActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".jiyu.activity.ConfirmNewPwdActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".jiyu.activity.IdentityAuthenticateActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".jiyu.activity.InformationSearchActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".jiyu.activity.HashrateActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".jiyu.activity.HashrateExplainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".jiyu.activity.CompletedRankActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".jiyu.activity.LoadMoreStateActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".jiyu.activity.LoginActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity
+            android:name=".jiyu.activity.RegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".jiyu.activity.InvitationCodeActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".jiyu.activity.MyPropetryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".jiyu.activity.MyCollectionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".jiyu.activity.GettingStartedActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".jiyu.activity.InviteFriendActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".jiyu.activity.RankListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".jiyu.activity.AboutUsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".jiyu.activity.MiningCheatsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".jiyu.activity.ListActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".jiyu.activity.ProjectIntroActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".jiyu.activity.AirDropCandyActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".jiyu.activity.InformationDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".jiyu.activity.ProjectGetCandyActivity"
+            android:screenOrientation="portrait"
+            android:hardwareAccelerated="true"/>
+        <activity
+            android:name=".jiyu.activity.ForgetPwdActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".jiyu.activity.BalanceDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".jiyu.activity.MessageRecordActivity"
+            android:screenOrientation="portrait" />
+    </application>
+
+
+
+</manifest>

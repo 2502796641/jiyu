@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+    <com.guang.jiyu.jiyu.widget.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_120dp"
+        android:background="@mipmap/icon_candy_price_bg">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/string_candy_price_is"
+            android:textSize="@dimen/text_18sp"
+            android:textColor="@color/colorBlack"
+            android:layout_margin="@dimen/size_25dp"/>
+
+        <TextView
+            android:id="@+id/tv_candy_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="@dimen/text_20sp"
+            android:textColor="@color/colorBlack"
+            android:layout_margin="@dimen/size_35dp"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_50dp"
+        android:background="@color/gray_2"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/string_currency"
+            android:textSize="@dimen/text_18sp"
+            android:textColor="@color/colorBlack"
+            android:layout_marginLeft="@dimen/size_20dp"
+            android:layout_centerVertical="true"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/string_total_get"
+            android:textSize="@dimen/text_18sp"
+            android:textColor="@color/colorBlack"
+            android:layout_centerInParent="true"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/string_price_about_is"
+            android:textSize="@dimen/text_18sp"
+            android:textColor="@color/colorBlack"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/size_20dp"
+            android:layout_marginRight="@dimen/size_20dp"
+            />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/lv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@null"
+        />
+</LinearLayout>

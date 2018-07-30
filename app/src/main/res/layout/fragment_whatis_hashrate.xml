@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:stv="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_2">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/size_15dp"
+        android:background="@color/white">
+        <TextView
+            android:id="@+id/tv_what_is_hashrate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/size_10dp"
+            android:textSize="@dimen/text_16sp"
+            android:lineSpacingExtra="@dimen/size_5dp"
+            android:text=""/>
+
+        <com.allen.library.SuperButton
+            android:id="@+id/btn_get"
+            android:layout_width="@dimen/size_120dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/size_5dp"
+            android:layout_marginRight="@dimen/size_10dp"
+            android:layout_marginTop="@dimen/size_10dp"
+            android:text="@string/string_get_hashrate"
+            android:textSize="@dimen/text_18sp"
+            stv:sCornersRadius="@dimen/size_5dp"
+            stv:sSolidColor="@color/yellow_2"
+            stv:sStrokeDashWidth="@dimen/size_10dp"
+            stv:sSizeHeight="@dimen/size_5dp"
+            stv:sStrokeColor="@color/colorBlack"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/size_50dp"
+            />
+    </RelativeLayout>
+</LinearLayout>

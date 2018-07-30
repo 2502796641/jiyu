@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_2">
+    <com.guang.jiyu.jiyu.widget.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_140dp"
+        android:background="@mipmap/icon_wallet_bg">
+        <TextView
+            android:id="@+id/tv_balance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="999.9999"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/text_32sp"
+            android:layout_marginTop="@dimen/size_30dp"
+            android:layout_marginLeft="@dimen/size_40dp"/>
+
+        <TextView
+            android:id="@+id/tv_currency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="M  B  T  C"
+            android:textSize="@dimen/text_20sp"
+            android:textColor="@color/colorBlack"
+            android:layout_marginLeft="@dimen/size_40dp"
+            android:layout_below="@+id/tv_balance"
+            />
+
+        <LinearLayout
+            android:id="@+id/ll_balance_details"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/size_15dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="明 细"
+                android:textSize="@dimen/text_16sp"/>
+
+            <ImageView
+                android:layout_width="@dimen/size_15dp"
+                android:layout_height="@dimen/size_15dp"
+                android:src="@mipmap/icon_right_arrow_black"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <View
+        style="@style/hor_view_15dp"
+        />
+
+    <RelativeLayout
+        android:id="@+id/rl_candy_box"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_60dp"
+        android:background="@color/white">
+        <ImageView
+            android:layout_width="@dimen/size_25dp"
+            android:layout_height="@dimen/size_25dp"
+            android:src="@mipmap/icon_candy_box"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/size_10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/string_candy_box"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/text_16sp"
+            android:layout_marginLeft="@dimen/size_50dp"/>
+        <LinearLayout
+            android:id="@+id/ll_candy_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/size_5dp">
+            <TextView
+                android:id="@+id/tv_candybox_balance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="@dimen/text_16sp"/>
+            <ImageView
+                android:layout_width="@dimen/size_20dp"
+                android:layout_height="@dimen/size_20dp"
+                android:src="@mipmap/icon_right_arrow_black"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+</LinearLayout>

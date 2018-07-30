@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/tv_test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/size_20dp"
+        android:maxLines="6"
+        android:ellipsize="end"
+        android:text="首页 → 九号娱乐 → 今日热点 → C罗15万小费给了谁_为什么要给15万小费
+C罗15万小费给了谁_为什么要给15万小费相关下载相关文章发表评论
+2018/7/20 13:50:38来源：本站原创作者：9号小编人气：C罗15万小费给了谁?为什么要给15万小费?前几天C罗以年薪3000万欧元的天价转会费转会尤文图斯引起社会各界的关注，近日又有消息爆料C罗给自己下榻酒店的工作人员给了15万小费!
+C罗15万小费给了谁
+近日，葡萄牙足球运动员克里斯蒂亚诺⋅罗纳尔多在结束其希腊之旅前往意大利时，给自己所下榻酒店的工作人员留下了19600欧元(约15.5万人民币)的小费。
+据俄罗斯卫星通讯社援引《太阳报》报道，克里斯蒂亚诺⋅罗纳尔多(C罗)此前在希腊同意大利尤文图斯足球俱乐部谈判自己的转会事宜。在离开之前，C罗表示他对这家名为酒店的服务水平印象深刻，并留下了19600欧元的小费。尤文图斯俱乐部则请酒店领导将这笔钱平均分给每位员工。
+在西方，给为自己服务的人员小费，是一个基本礼仪，但是如此多小费并不常见。一方面，看来刚刚和尤文图斯签订四年天价合约的C罗心情不错，一方面，酒店的服务看来颇让C罗满意，最重要的一方面，C罗并不是个小气的人，当然前提是他不差钱。
+据悉，C罗已经和尤文图斯签订了为期4年，年薪3000万欧元(约2.4亿人民币)的大合同。这意味着这笔小费实际上还抵不上他一个工作日的工资。此前，尤文图斯俱乐部在第一天开售印有C罗名字的7号球衣时，便赚取约5500万欧元。就在这24小时内，C罗的球迷疯狂购买了52万件球衣，每件衣服售价105欧元(约830人民币)。"/>
+</LinearLayout>

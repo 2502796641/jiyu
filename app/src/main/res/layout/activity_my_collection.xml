@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:stv="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.guang.jiyu.jiyu.widget.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:id="@+id/rl_no_information"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <ImageView
+                android:layout_width="@dimen/size_100dp"
+                android:layout_height="@dimen/size_120dp"
+                android:src="@mipmap/icon_no_collection"
+                android:layout_above="@+id/tv_no_collection_tips"
+                android:layout_centerHorizontal="true"
+                />
+
+            <TextView
+                android:id="@+id/tv_no_collection_tips"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/string_no_collection_tips"
+                android:layout_centerInParent="true"/>
+
+            <com.allen.library.SuperButton
+                android:id="@+id/btn_jump_information"
+                android:layout_width="@dimen/size_120dp"
+                android:layout_height="@dimen/size_35dp"
+                stv:sCornersRadius="@dimen/size_8dp"
+                stv:sSolidColor="@color/yellow_2"
+                android:text="@string/string_information"
+                android:textSize="@dimen/text_16sp"
+                android:textColor="@color/colorBlack"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/size_50dp"
+                android:layout_below="@id/tv_no_collection_tips"/>
+        </RelativeLayout>
+        <com.guang.jiyu.jiyu.widget.PullToRefreshLayout.PullToRefreshLayout
+            android:id="@+id/refresh_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ListView
+                android:id="@+id/lv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"></ListView>
+        </com.guang.jiyu.jiyu.widget.PullToRefreshLayout.PullToRefreshLayout>
+    </RelativeLayout>
+
+</LinearLayout>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:stv="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_2">
+    <com.guang.jiyu.jiyu.widget.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.guang.jiyu.jiyu.widget.TitleBar>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/size_10dp"
+        android:text="@string/string_verify_mobile_tips"
+        android:textColor="@color/gray_5"
+        android:textSize="@dimen/text_16sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/size_10dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/string_binding_mobile"
+            android:textSize="@dimen/text_16sp"/>
+
+        <TextView
+            android:id="@+id/tv_binding_mobile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="123456789"
+            android:textSize="@dimen/text_16sp"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_60dp"
+        android:orientation="horizontal"
+        android:background="@color/white">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/string_input_verify_code"
+            android:textSize="@dimen/text_16sp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/size_10dp"/>
+
+        <EditText
+            android:id="@+id/et_nickname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/size_150dp"
+            android:background="@null"
+            android:hint="验证码"
+            android:textSize="@dimen/text_16sp"/>
+        <com.allen.library.SuperButton
+            android:id="@+id/btn_send_verify_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/size_5dp"
+            android:layout_marginRight="@dimen/size_10dp"
+            android:text="@string/string_send_verify_code"
+            android:textColor="@color/white"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            stv:sCornersRadius="@dimen/size_5dp"
+            stv:sSolidColor="@color/yellow_2"
+            stv:sStrokeDashWidth="@dimen/size_10dp"
+            stv:sSizeHeight="@dimen/size_10dp"
+            stv:sStrokeWidth="@dimen/size_0.5dp"
+            />
+    </RelativeLayout>
+</LinearLayout>

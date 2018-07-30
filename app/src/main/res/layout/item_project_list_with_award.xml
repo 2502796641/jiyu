@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:stv="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/size_140dp"
+    android:background="@mipmap/icon_project_bg1">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="@dimen/size_50dp"
+        android:layout_height="@dimen/size_50dp"
+        android:layout_centerVertical="true"
+        android:src="@mipmap/icon_mbtc_logo"
+        android:layout_marginLeft="20dp"/>
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MBTC"
+        android:textStyle="bold"
+        android:textSize="@dimen/text_18sp"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/size_20dp"
+        android:layout_marginLeft="@dimen/size_80dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/size_80dp"
+        android:layout_marginRight="@dimen/size_20dp"
+        android:layout_marginTop="@dimen/size_5dp"
+        android:layout_below="@+id/tv_title"
+        android:text="@string/string_MBTC_contents"
+        android:textSize="@dimen/text_12sp"
+        android:textColor="@color/white"
+        android:maxLines="3"
+        android:maxEms="40"
+        android:ellipsize="end"
+        android:lineSpacingExtra="3dp"/>
+
+    <com.allen.library.SuperButton
+        android:id="@+id/btn_send_verify_code"
+        android:layout_width="@dimen/size_60dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/size_15dp"
+        android:text="@string/string_get_award"
+        android:layout_centerVertical="true"
+        android:textColor="@color/yellow_2"
+        android:layout_alignParentRight="true"
+        stv:sCornersRadius="@dimen/size_10dp"
+        stv:sSolidColor="@color/white"
+        stv:sStrokeDashWidth="@dimen/size_10dp"
+        stv:sSizeHeight="@dimen/size_10dp"
+        stv:sStrokeWidth="@dimen/size_0.5dp"
+        stv:sStrokeColor="@color/white"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="@dimen/size_15dp"
+
+        />
+
+</RelativeLayout>

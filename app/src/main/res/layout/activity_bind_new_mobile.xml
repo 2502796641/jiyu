@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:stv="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.guang.jiyu.jiyu.widget.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></com.guang.jiyu.jiyu.widget.TitleBar>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_60dp"
+        android:orientation="horizontal"
+        android:background="@color/white">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/string_mobile_num"
+            android:textSize="@dimen/text_16sp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/size_20dp"/>
+
+        <EditText
+            android:id="@+id/et_new_mobile_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/size_100dp"
+            android:background="@null"
+            android:hint="@string/string_input_new_mobile"
+            android:textSize="@dimen/text_16sp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_60dp"
+        android:orientation="horizontal"
+        android:background="@color/white">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/string_verify_code"
+            android:textSize="@dimen/text_16sp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/size_20dp"/>
+
+        <EditText
+            android:id="@+id/et_verify_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/size_100dp"
+            android:background="@null"
+            android:hint="@string/string_input_verify_code"
+            android:textSize="@dimen/text_16sp"/>
+        <com.allen.library.SuperButton
+            android:id="@+id/btn_send_verify_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/size_10dp"
+            android:layout_marginRight="@dimen/size_10dp"
+            android:text="@string/string_send_verify_code"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            stv:sCornersRadius="@dimen/size_5dp"
+            stv:sSolidColor="@color/white"
+            stv:sStrokeDashWidth="@dimen/size_10dp"
+            stv:sSizeHeight="@dimen/size_10dp"
+            stv:sStrokeWidth="@dimen/size_0.5dp"
+            stv:sStrokeColor="@color/colorBlack"
+            />
+    </RelativeLayout>
+</LinearLayout>

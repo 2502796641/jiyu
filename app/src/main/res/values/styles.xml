@@ -1,0 +1,99 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="hor_view_small">
+        <item name="android:background">@color/gray_3</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/size_0.5dp</item>
+    </style>
+    <style name="hor_view_1dp">
+        <item name="android:background">@color/gray_4</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/size_1dp</item>
+    </style>
+    <style name="hor_view_5dp">
+        <item name="android:background">@color/gray_3</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/size_5dp</item>
+    </style>
+    <style name="hor_view_10dp">
+        <item name="android:background">@color/gray_4</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/size_10dp</item>
+    </style>
+    <style name="hor_view_10dp_gray_f5f5f5">
+        <item name="android:background">@color/gray_f5f5f5</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/size_10dp</item>
+    </style>
+    <style name="hor_view_10dp_gray_2">
+        <item name="android:background">@color/gray_2</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/size_10dp</item>
+    </style>
+    <style name="hor_view_15dp">
+        <item name="android:background">@color/gray_2</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/size_15dp</item>
+    </style>
+    <style name="hor_view_1dp_padding_5">
+        <item name="android:background">@color/gray_3</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginLeft">@dimen/size_5dp</item>
+        <item name="android:layout_marginRight">@dimen/size_5dp</item>
+        <item name="android:layout_height">@dimen/size_1dp</item>
+    </style>
+    <style name="ver_view_1dp">
+        <item name="android:background">@color/yellow_2</item>
+        <item name="android:layout_width">@dimen/size_1dp</item>
+        <item name="android:layout_height">@dimen/size_20dp</item>
+    </style>
+    <style name="ver_view_3dp">
+        <item name="android:background">@color/yellow_2</item>
+        <item name="android:layout_width">@dimen/size_3dp</item>
+        <item name="android:layout_height">@dimen/size_20dp</item>
+    </style>
+    <style name="ver_view_full">
+        <item name="android:background">@color/gray_3</item>
+        <item name="android:layout_width">@dimen/size_0.5dp</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <!--底部弹出popupwindow样式-->
+    <style name="mypopwindow_anim_style">
+        <item name="android:windowEnterAnimation">@anim/popup_out_anim</item>
+        <!-- 指定显示的动画xml -->
+        <item name="android:windowExitAnimation">@anim/popup_in_anim</item>
+        <!-- 指定消失的动画xml -->
+    </style>
+
+    <!--领取糖果popupwindow样式-->
+    <style name="mypopwindow_anim_fade">
+        <item name="android:windowEnterAnimation">@anim/popup_fade_out_anim</item>
+        <!-- 指定显示的动画xml -->
+        <item name="android:windowExitAnimation">@anim/popup_fade_in_anim</item>
+        <!-- 指定消失的动画xml -->
+    </style>
+
+
+    <style name="MyEditText" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/yellow_2</item>
+
+    </style>
+
+    <style name="Activity_Transparent">
+        <item name="android:windowBackground">@color/transparent_background</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+
+
+</resources>

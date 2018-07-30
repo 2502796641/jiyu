@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_80dp">
+        <TextView
+            android:id="@+id/tv_currency"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/string_currency"
+            android:textSize="@dimen/text_16sp"
+            android:textColor="@color/colorBlack"
+            android:layout_marginLeft="@dimen/size_20dp"
+            android:layout_marginTop="@dimen/size_15dp"
+            />
+
+        <TextView
+            android:id="@+id/tv_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/string_total_get"
+            android:textSize="@dimen/text_16sp"
+            android:textColor="@color/colorBlack"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/size_15dp"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/string_price_about_is"
+            android:textSize="@dimen/text_16sp"
+            android:textColor="@color/colorBlack"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/size_20dp"
+            android:layout_marginRight="@dimen/size_20dp"
+            android:layout_marginTop="@dimen/size_15dp"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_get_awaed_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/string_get_award_date"
+            android:layout_marginLeft="@dimen/size_20dp"
+            android:textSize="@dimen/text_16sp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/size_15dp"/>
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2018-09-09  19:00:19"
+            android:layout_toRightOf="@+id/tv_get_awaed_txt"
+            android:textSize="@dimen/text_16sp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/size_15dp"/>
+    </RelativeLayout>
+    <View
+        style="@style/hor_view_1dp"
+        android:layout_alignParentBottom="true"/>
+</RelativeLayout>

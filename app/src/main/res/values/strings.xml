@@ -1,0 +1,139 @@
+<resources>
+    <string name="app_name">集鱼</string>
+    <string name="string_MBTC_contents">美链宝是一个开源的有智能合约功能的公共区块链平台，通过其专用加密货币MBTC提供分布式的虚拟机器来处理点对点合约。区块链参与者用手机即可挖出数字资产，每天躺着也能赚钱！</string>
+    <string name="string_what_is_MBTC">MBTC是依托于区块链技术，基于个人在梅里城活动产生的奖励，可以用于梅里城的消费、兑换以及在共识机制下的交易。梅里城居民除了完成基础任务获得算力值挖掘美链宝数字资产之外，还可以购买专业矿机来增加算力值获取更多的MBTC。同时对梅里城活跃度不高（连续48小时不登录梅里城）实行算力值锁定，停止MBTC的挖掘，等待下一次登录激活算力值。MBTC总量有限、全球累计发行50亿枚，跟据算力值自动分配每日产生有限的MBTC，且每两年出产量减少一半，随着时间推移，获取难度越来越大，前期参与更有优势</string>
+
+    <!-- 底部导航栏 -->
+    <string name="string_homepage">首页</string>
+    <string name="string_information">资讯</string>
+    <string name="string_market">行情</string>
+    <string name="string_project">项目</string>
+    <string name="string_user">我的</string>
+
+    <!-- 首页 -->
+    <string name="string_mining_cheats">挖矿秘籍</string>
+
+    <!-- 排行榜 -->
+    <string name="string_hashrate_rank">算力排行榜</string>
+    <string name="string_mbtc_rank">MBTC排行榜</string>
+
+    <!-- 资讯 -->
+    <string name="string_fast_information">快讯</string>
+    <string name="string_search">搜索</string>
+    <string name="string_history_search">历史搜索</string>
+    <string name="string_input_antistop">&#160;&#160;&#160;&#160;请输入关键词</string>
+
+    <!-- 项目 -->
+    <string name="string_project_intro">项目简介</string>
+    <string name="string_issue_date">发行时间</string>
+    <string name="string_offical_website">官网</string>
+    <string name="string_white_paper">白皮书</string>
+    <string name="string_issue_count">发行量</string>
+    <string name="string_circulate_count">流通量</string>
+
+    <!-- 个人中心 -->
+    <string name="string_personal_center">个人中心</string>
+    <string name="string_my_property">我的资产</string>
+    <string name="string_my_collect">我的收藏</string>
+    <string name="string_newhand">新手入门</string>
+    <string name="string_invite_friend">邀请好友</string>
+    <string name="string_about_us">关于我们</string>
+    <string name="string_no_collection_tips">您还没有收藏过文章哦~快去浏览吧</string>
+
+    <!-- 设置 -->
+    <string name="string_account_setting">账号设置</string>
+    <string name="string_presonal_icon">头像</string>
+    <string name="string_nickname">昵称</string>
+    <string name="string_mobile">手机</string>
+    <string name="string_change_pwd">修改密码</string>
+    <string name="string_id_identification">身份认证</string>
+    <string name="string_mark_invite_code">填写推荐人邀请码</string>
+    <string name="string_account_exit">退出账号</string>
+
+    <!-- 更换手机号 -->
+    <string name="string_verify_mobile_tips">为保证账号安全，需要验证当前手机</string>
+    <string name="string_binding_mobile">当前绑定手机号：</string>
+    <string name="string_input_verify_code">请填写验证码</string>
+    <string name="string_input_invitation_code">请填写邀请码</string>
+    <string name="string_input_new_mobile">请输入新手机号</string>
+    <string name="string_send_verify_code">发送验证码</string>
+    <string name="string_mobile_num">手机号</string>
+    <string name="string_verify_code">验证码</string>
+    <string name="string_invitation_code_tips">*邀请码仅可填写一次，保存后无法再次修改，请谨慎填写</string>
+
+
+    <!-- 修改密码 -->
+    <string name="string_input_new_pwd_txt">输入新密码</string>
+    <string name="string_input_new_pwd">请输入新密码</string>
+    <string name="string_confirm_new_pwd_txt">确认新密码</string>
+    <string name="string_confirm_new_pwd">请重复一遍新密码</string>
+
+    <!-- 身份认证 -->
+    <string name="string_name">姓名</string>
+    <string name="string_ID_card">身份证号</string>
+    <string name="string_input_ture_name">请填写真实姓名</string>
+    <string name="string_input_id_card_code">请填写身份证号</string>
+    <string name="string_upload_idcard_front">请上传身份证正面照</string>
+    <string name="string_upload_idcard_back">请上传身份证反面照</string>
+    <string name="string_upload_idcard_inhand">上传本人手持身份证照</string>
+
+    <!-- 分享 -->
+    <string name="string_share_to">分享到</string>
+    <string name="string_sina_weibo">新浪微博</string>
+    <string name="string_wechat">微信</string>
+    <string name="string_friends_circle">朋友圈</string>
+    <string name="string_QQ">QQ</string>
+
+    <!-- 算力 -->
+    <string name="string_hashrate">算力</string>
+    <string name="string_hashrate_task">算力任务</string>
+    <string name="string_ranking_list">排行榜</string>
+    <string name="string_hashrate_record">算力记录</string>
+    <string name="string_whatis_hashrate">什么是算力</string>
+    <string name="string_get_hashrate">获取算力</string>
+    <string name="string_how_to_get">如何获取</string>
+    <string name="string_send_hashrate_after_signin">签到送算力</string>
+    <string name="string_explain">说明</string>
+    <string name="string_newest_state">最新动态</string>
+    <string name="string_check_more_state">查看更多动态</string>
+    <string name="string_check_complete_rank">查看完整排行</string>
+    <string name="string_sign_in">签到</string>
+    <string name="string_read_task">阅读任务</string>
+    <string name="string_loading_more">加载更多...</string>
+    <string name="string_sign_award">每天签到可加5算力，每个用户每天仅限一次</string>
+    <string name="string_how_to_get_hashrate">如何获取算力</string>
+    <string name="string_hashrate_update_explain">邀请好友加算力说明</string>
+
+    <!-- 登录注册 -->
+    <string name="string_login">登录</string>
+    <string name="string_register">注册</string>
+    <string name="string_forget_pwd">忘记密码</string>
+    <string name="string_input_mobile">请输入手机号</string>
+    <string name="string_input_pwd">请输入密码</string>
+    <string name="string_input_pwd_again">请再确认一遍新密码</string>
+
+
+    <!-- 糖果盒 -->
+    <string name="string_candy_box">糖果盒</string>
+    <string name="string_get_award">领取</string>
+    <string name="string_currency">币种</string>
+    <string name="string_total_get">共领取</string>
+    <string name="string_candy_price_is">糖果总价折合</string>
+    <string name="string_price_about_is">价值</string>
+    <string name="string_get_award_date">领取时间：</string>
+    <string name="string_older_activity">历史活动</string>
+
+    <!-- 邀请好友 -->
+    <string name="string_my_invite_code">我的邀请码</string>
+    <string name="string_copy_invite_code">复制邀请码</string>
+    <string name="string_invite_success">邀请好友成功</string>
+    <string name="string_invite_remark">邀请记录</string>
+
+    <!-- 刷新加载控件 -->
+    <string name="net_error">网络未连接</string>
+    <string name="error">您的设备网络不稳定\n请检查后点击图标重试</string>
+    <string name="empty">暂无数据</string>
+    <string name="loading">加载中...</string>
+
+
+</resources>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/size_140dp"
+    >
+    <RelativeLayout
+        android:id="@+id/rl_bg"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_140dp"
+        android:background="@mipmap/icon_project_bg1">
+
+    </RelativeLayout>
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="@dimen/size_50dp"
+        android:layout_height="@dimen/size_50dp"
+        android:layout_centerVertical="true"
+        android:src="@mipmap/icon_mbtc_logo"
+        android:layout_marginLeft="20dp"/>
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MBTC"
+        android:textStyle="bold"
+        android:textSize="@dimen/text_18sp"
+        android:textColor="@color/white"
+        android:layout_marginTop="@dimen/size_20dp"
+        android:layout_marginLeft="@dimen/size_80dp"/>
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/size_80dp"
+        android:layout_marginRight="@dimen/size_20dp"
+        android:layout_marginTop="@dimen/size_5dp"
+        android:layout_below="@+id/tv_title"
+        android:text="@string/string_MBTC_contents"
+        android:textSize="@dimen/text_16sp"
+        android:textColor="@color/white"
+        android:maxLines="3"
+        android:ellipsize="end"
+        android:lineSpacingExtra="3dp"/>
+</RelativeLayout>

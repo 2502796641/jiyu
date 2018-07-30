@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:stv="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_240dp"
+        android:background="@mipmap/icon_login_background">
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+        >
+        <LinearLayout
+            android:id="@+id/ll_mobile"
+            android:layout_width="@dimen/size_300dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/size_5dp"
+            android:orientation="horizontal"
+            android:layout_centerHorizontal="true">
+            <ImageView
+                android:layout_width="@dimen/size_30dp"
+                android:layout_height="@dimen/size_30dp"
+                android:src="@mipmap/icon_login_username"/>
+
+            <EditText
+                android:id="@+id/et_mobile"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_40dp"
+                android:theme="@style/MyEditText"
+                android:hint="@string/string_input_mobile"
+                android:textSize="@dimen/text_14sp"
+                android:paddingLeft="@dimen/size_10dp"
+                android:layout_marginLeft="@dimen/size_5dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_verify_code"
+            android:layout_width="@dimen/size_300dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/size_5dp"
+            android:orientation="horizontal"
+            android:layout_below="@+id/ll_mobile"
+            android:layout_marginTop="@dimen/size_5dp"
+
+            android:layout_centerHorizontal="true">
+            <ImageView
+                android:layout_width="@dimen/size_30dp"
+                android:layout_height="@dimen/size_30dp"
+                android:src="@mipmap/icon_login_username"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/et_verify_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_40dp"
+                    android:theme="@style/MyEditText"
+                    android:hint="@string/string_input_mobile"
+                    android:textSize="@dimen/text_14sp"
+                    android:paddingLeft="@dimen/size_10dp"
+                    android:layout_marginLeft="@dimen/size_5dp"/>
+                <com.allen.library.SuperButton
+                    android:id="@+id/btn_get_verity_code"
+                    android:layout_width="@dimen/size_80dp"
+                    android:layout_height="@dimen/size_25dp"
+                    stv:sSolidColor="@color/yellow_2"
+                    android:text="@string/string_send_verify_code"
+                    android:textSize="@dimen/text_12sp"
+                    android:layout_marginTop="@dimen/size_2dp"
+                    android:textColor="@color/white"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="@dimen/size_5dp"
+                    />
+            </RelativeLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_pwd"
+            android:layout_width="@dimen/size_300dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/size_5dp"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/size_5dp"
+            android:layout_below="@+id/ll_verify_code"
+            android:layout_centerHorizontal="true">
+            <ImageView
+                android:layout_width="@dimen/size_30dp"
+                android:layout_height="@dimen/size_30dp"
+                android:src="@mipmap/icon_login_username"/>
+
+            <EditText
+                android:id="@+id/et_pwd"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_40dp"
+                android:theme="@style/MyEditText"
+                android:hint="@string/string_input_pwd"
+                android:textSize="@dimen/text_14sp"
+                android:paddingLeft="@dimen/size_10dp"
+                android:layout_marginLeft="@dimen/size_5dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_pwd_again"
+            android:layout_width="@dimen/size_300dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/size_5dp"
+            android:orientation="horizontal"
+            android:layout_below="@+id/ll_pwd"
+            android:layout_marginTop="@dimen/size_5dp"
+            android:layout_centerHorizontal="true">
+            <ImageView
+                android:layout_width="@dimen/size_30dp"
+                android:layout_height="@dimen/size_30dp"
+                android:src="@mipmap/icon_login_username"/>
+
+            <EditText
+                android:id="@+id/et_again_pwd"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_40dp"
+                android:theme="@style/MyEditText"
+                android:hint="@string/string_input_pwd"
+                android:textSize="@dimen/text_14sp"
+                android:paddingLeft="@dimen/size_10dp"
+                android:layout_marginLeft="@dimen/size_5dp"/>
+        </LinearLayout>
+
+        <com.allen.library.SuperButton
+            android:id="@+id/btn_login"
+            android:layout_width="@dimen/size_280dp"
+            android:layout_height="@dimen/size_40dp"
+            stv:sCornersRadius="@dimen/size_5dp"
+            stv:sSolidColor="@color/yellow_2"
+            android:text="@string/string_login"
+            android:textSize="@dimen/text_16sp"
+            android:textColor="@color/white"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/size_20dp"
+            android:layout_below="@id/ll_pwd_again"/>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

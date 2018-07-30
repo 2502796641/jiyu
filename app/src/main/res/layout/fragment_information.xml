@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:stv="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+    <com.guang.jiyu.jiyu.widget.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <View
+        style="@style/hor_view_1dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_60dp"
+        android:orientation="horizontal"
+        android:background="@color/white">
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <com.allen.library.SuperButton
+                android:id="@+id/btn_fast_information"
+                android:layout_width="@dimen/size_80dp"
+                android:layout_height="@dimen/size_35dp"
+                stv:sCornersRadius="@dimen/size_8dp"
+                stv:sSolidColor="@color/yellow_2"
+                android:text="@string/string_fast_information"
+                android:textSize="@dimen/text_16sp"
+                android:textColor="@color/white"
+                android:layout_centerInParent="true"
+                />
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <com.allen.library.SuperButton
+                android:id="@+id/btn_information"
+                android:layout_width="@dimen/size_80dp"
+                android:layout_height="@dimen/size_35dp"
+                stv:sCornersRadius="@dimen/size_8dp"
+                stv:sSolidColor="@color/white"
+                android:text="@string/string_information"
+                android:textSize="@dimen/text_16sp"
+                android:textColor="@color/colorBlack"
+                android:layout_centerInParent="true"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+    <View
+        style="@style/hor_view_1dp"/>
+    <com.guang.jiyu.jiyu.widget.NoScrollViewPager
+        android:id="@+id/vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

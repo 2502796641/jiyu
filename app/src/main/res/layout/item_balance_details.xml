@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    >
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_50dp"
+        android:layout_margin="@dimen/size_20dp"
+        >
+        <TextView
+        android:id="@+id/tv_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="收取"
+        android:textColor="@color/colorBlack"
+        android:textSize="@dimen/text_18sp"/>
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2020-20-20  19:00:00"
+            android:layout_alignParentBottom="true"
+            />
+
+        <TextView
+            android:id="@+id/tv_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="-0.05"
+            android:textSize="@dimen/text_16sp"
+            android:textColor="@color/red"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"/></RelativeLayout>
+
+</RelativeLayout>

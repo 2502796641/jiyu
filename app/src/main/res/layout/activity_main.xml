@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/layout_main"
+    >
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        ></android.support.v4.view.ViewPager>
+
+    <com.chaychan.library.BottomBarLayout
+        android:id="@+id/bbl"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:background="@color/tab_gb"
+        >
+
+        <com.chaychan.library.BottomBarItem
+            android:id="@+id/bbl_home"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            app:iconNormal="@mipmap/icon_home_normal"
+            app:iconSelected="@mipmap/icon_home_select"
+            app:iconHeight="@dimen/size_30dp"
+            app:iconWidth="@dimen/size_35dp"
+            app:itemText="@string/string_homepage"
+            app:textColorNormal="@color/tab_normal_color"
+            app:textColorSelected="@color/yellow_2"
+            app:itemTextSize="@dimen/text_12sp"
+            app:itemMarginTop="@dimen/size_minus_4dp"
+            app:openTouchBg="true"
+            app:touchDrawable="@drawable/selector_bg"
+            />
+
+        <com.chaychan.library.BottomBarItem
+            android:id="@+id/bbl_information"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            app:iconNormal="@mipmap/icon_information_normal"
+            app:iconSelected="@mipmap/icon_information_select"
+            app:iconHeight="@dimen/size_30dp"
+            app:iconWidth="@dimen/size_35dp"
+            app:itemText="@string/string_information"
+            app:textColorNormal="@color/tab_normal_color"
+            app:textColorSelected="@color/yellow_2"
+            app:itemTextSize="@dimen/text_12sp"
+            app:itemMarginTop="@dimen/size_minus_4dp"
+            app:openTouchBg="true"
+            app:unreadThreshold="999"
+            app:touchDrawable="@drawable/selector_bg"
+            />
+
+
+        <com.chaychan.library.BottomBarItem
+            android:id="@+id/bbl_market"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            app:iconNormal="@mipmap/icon_market_normal"
+            app:iconSelected="@mipmap/icon_market_select"
+            app:iconHeight="@dimen/size_30dp"
+            app:iconWidth="@dimen/size_35dp"
+            app:itemText="@string/string_market"
+            app:textColorNormal="@color/tab_normal_color"
+            app:textColorSelected="@color/yellow_2"
+            app:itemTextSize="@dimen/text_12sp"
+            app:itemMarginTop="@dimen/size_minus_4dp"
+            app:openTouchBg="true"
+            app:touchDrawable="@drawable/selector_bg"
+            />
+
+        <com.chaychan.library.BottomBarItem
+            android:id="@+id/bbl_project"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            app:iconNormal="@mipmap/icon_project_normal"
+            app:iconSelected="@mipmap/icon_project_select"
+            app:iconHeight="@dimen/size_30dp"
+            app:iconWidth="@dimen/size_35dp"
+            app:itemText="@string/string_project"
+            app:textColorNormal="@color/tab_normal_color"
+            app:textColorSelected="@color/yellow_2"
+            app:itemTextSize="@dimen/text_12sp"
+            app:itemMarginTop="@dimen/size_minus_4dp"
+            app:openTouchBg="true"
+            app:touchDrawable="@drawable/selector_bg"
+            />
+        <com.chaychan.library.BottomBarItem
+            android:id="@+id/bbl_user"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            app:iconNormal="@mipmap/icon_user_normal"
+            app:iconSelected="@mipmap/icon_user_select"
+            app:iconHeight="@dimen/size_30dp"
+            app:iconWidth="@dimen/size_35dp"
+            app:itemText="@string/string_user"
+            app:textColorNormal="@color/tab_normal_color"
+            app:textColorSelected="@color/yellow_2"
+            app:itemTextSize="@dimen/text_12sp"
+            app:itemMarginTop="@dimen/size_minus_4dp"
+            app:openTouchBg="true"
+            app:touchDrawable="@drawable/selector_bg"
+            />
+
+    </com.chaychan.library.BottomBarLayout>
+
+</LinearLayout>

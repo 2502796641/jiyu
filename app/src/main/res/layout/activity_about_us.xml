@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
+    <com.guang.jiyu.jiyu.widget.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <View
+        style="@style/hor_view_1dp"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/icon_aboutus_bg">
+        <ImageView
+            android:id="@+id/iv_logo"
+            android:layout_width="@dimen/size_70dp"
+            android:layout_height="@dimen/size_70dp"
+            android:src="@mipmap/icon_about_us_logo"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/size_50dp"/>
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MBTC"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/text_16sp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/iv_logo"/>
+        <TextView
+            android:id="@+id/tv_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="v1.0"
+            android:textSize="@dimen/text_16sp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/tv_name"/>
+
+        <TextView
+            android:id="@+id/tv_details"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/size_20dp"
+            android:layout_below="@+id/tv_version"
+            android:text="@string/string_MBTC_contents"
+            android:textSize="@dimen/text_13sp"
+            android:textColor="@color/colorBlack"
+            android:lineSpacingExtra="@dimen/size_10dp"/>
+    </RelativeLayout>
+
+
+</LinearLayout>

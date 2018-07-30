@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_120dp"
+        android:padding="@dimen/size_10dp"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_marginRight="@dimen/size_10dp"
+            >
+            <TextView
+                android:id="@+id/tv_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="4"
+                android:ellipsize="end"
+                android:text="俄罗斯法院及海关禁止进口加密挖矿设备，下月将进行监管数字货币"
+                android:textSize="@dimen/text_16sp"/>
+
+            <TextView
+                android:id="@+id/tv_url"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="人民网"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:textSize="@dimen/text_12sp"/>
+            <RelativeLayout
+                android:layout_width="@dimen/size_100dp"
+                android:layout_height="@dimen/size_20dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                >
+                <ImageView
+                    android:layout_width="@dimen/size_30dp"
+                    android:layout_height="@dimen/size_20dp"
+                    android:src="@mipmap/icon_reading_quentity"
+                    android:layout_toLeftOf="@id/tv_reading_count"
+                    android:layout_alignParentBottom="true"
+                    />
+                <TextView
+                    android:id="@+id/tv_reading_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="123456"
+                    android:textSize="@dimen/text_12sp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"                    />
+            </RelativeLayout>
+
+        </RelativeLayout>
+        <ImageView
+            android:id="@+id/iv_content_img"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6"
+            android:src="@mipmap/icon_excmple"
+            android:scaleType="fitXY"/>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

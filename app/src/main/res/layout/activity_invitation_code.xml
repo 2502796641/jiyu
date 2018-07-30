@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_2">
+    <com.guang.jiyu.jiyu.widget.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <View
+        style="@style/hor_view_15dp"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_60dp"
+        android:orientation="horizontal"
+        android:background="@color/white">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="邀请码"
+            android:textSize="@dimen/text_16sp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/size_10dp"/>
+
+        <EditText
+            android:id="@+id/et_invitation_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/size_100dp"
+            android:hint="@string/string_input_invitation_code"
+            android:background="@null"
+            android:textSize="@dimen/text_16sp"/>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/size_10dp"
+        android:text="@string/string_invitation_code_tips"/>
+</LinearLayout>
