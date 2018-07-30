@@ -83,6 +83,7 @@ public class MainActivity extends BaseActivity {
         setView(R.layout.activity_main);
         initFragment();
         initListener();
+
     }
 
     @Override
