@@ -67,6 +67,7 @@ public class FastInfoAdapter extends RecyclerView.Adapter implements View.OnClic
             ((WithDateHolder) holder).ll_bearish.setTag(position);
             ((WithDateHolder) holder).ll_bulish.setTag(position);
             ((WithDateHolder) holder).ll_share_time.setTag(position);
+            ((WithDateHolder) holder).tv_content.setTag(position);
         }
 
         if(holder instanceof NormalHolder){
@@ -81,7 +82,7 @@ public class FastInfoAdapter extends RecyclerView.Adapter implements View.OnClic
             ((NormalHolder) holder).ll_bearish.setTag(position);
             ((NormalHolder) holder).ll_bulish.setTag(position);
             ((NormalHolder) holder).ll_share_time.setTag(position);
-
+            ((NormalHolder) holder).tv_content.setTag(position);
         }
     }
 
@@ -127,6 +128,9 @@ public class FastInfoAdapter extends RecyclerView.Adapter implements View.OnClic
                 case R.id.ll_share_times:
                     mOnItemClickListener.onClick(view, ViewName.SHARE, tag);
                     break;
+                case R.id.tv_content:
+                    mOnItemClickListener.onClick(view, ViewName.CONTENT, tag);
+                    break;
             }
         }
     }
@@ -138,6 +142,7 @@ public class FastInfoAdapter extends RecyclerView.Adapter implements View.OnClic
         BULISH,
         BEARISH,
         SHARE,
+        CONTENT,
     }
 
     public interface OnRecyclerViewItemClickListener {
@@ -182,6 +187,7 @@ public class FastInfoAdapter extends RecyclerView.Adapter implements View.OnClic
             ll_bulish.setOnClickListener(FastInfoAdapter.this);
             ll_bearish.setOnClickListener(FastInfoAdapter.this);
             ll_share_time.setOnClickListener(FastInfoAdapter.this);
+            tv_content.setOnClickListener(FastInfoAdapter.this);
         }
     }
 
@@ -220,6 +226,7 @@ public class FastInfoAdapter extends RecyclerView.Adapter implements View.OnClic
             ll_bulish.setOnClickListener(FastInfoAdapter.this);
             ll_bearish.setOnClickListener(FastInfoAdapter.this);
             ll_share_time.setOnClickListener(FastInfoAdapter.this);
+            tv_content.setOnClickListener(FastInfoAdapter.this);
         }
     }
 }

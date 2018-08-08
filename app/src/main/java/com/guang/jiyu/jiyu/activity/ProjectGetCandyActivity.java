@@ -6,7 +6,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
+import android.widget.PopupWindow;
 
 import com.guang.jiyu.R;
 import com.guang.jiyu.base.BaseActivity;
@@ -21,6 +23,7 @@ import com.guang.jiyu.jiyu.utils.ActivityUtils;
 import com.guang.jiyu.jiyu.utils.LinkParams;
 import com.guang.jiyu.jiyu.utils.ToastUtils;
 import com.guang.jiyu.jiyu.utils.UserInfoUtils;
+import com.guang.jiyu.jiyu.widget.GetCandySuccessPopupwindow;
 import com.guang.jiyu.jiyu.widget.PullToRefreshLayout.BaseRefreshListener;
 import com.guang.jiyu.jiyu.widget.PullToRefreshLayout.PullToRefreshLayout;
 import com.guang.jiyu.jiyu.widget.TitleBar;
@@ -59,6 +62,7 @@ public class ProjectGetCandyActivity extends BaseActivity {
     private List<ProjectDetailModel> older_list;
     private List<AirCandyModel> candy_list;
     private CandyActivityAdapter candyActivityAdapter;
+    private GetCandySuccessPopupwindow getCandySuccessPopupwindow;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -155,8 +159,8 @@ public class ProjectGetCandyActivity extends BaseActivity {
                                                     ToastUtils.showToast("点击了LL_MAIN" + position);
                                                     break;
                                                 case BTN_GET:
-                                                    EventBus.getDefault().post(new GetCandySuccessEvent(candy_list.get(position)));
-                                                    finish();
+                                                    //EventBus.getDefault().post(new GetCandySuccessEvent(candy_list.get(position)));
+                                                    initGetCandyPopWindow(candy_list.get(position));
                                                     break;
                                             }
                                         }
@@ -173,6 +177,29 @@ public class ProjectGetCandyActivity extends BaseActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    private void initGetCandyPopWindow(AirCandyModel model) {
+        getCandySuccessPopupwindow = new GetCandySuccessPopupwindow(this);
+        getCandySuccessPopupwindow.setOnItemClickListener(new GetCandySuccessPopupwindow.OnItemClickListener() {
+            @Override
+            public void setOnItemClick(View v) {
+                switch (v.getId()){
+                    case R.id.iv_close:
+                        getCandySuccessPopupwindow.dismiss();
+                }
+            }
+        });
+
+        getCandySuccessPopupwindow.showAtLocation(ProjectGetCandyActivity.this.getWindow().getDecorView(), Gravity.CENTER, 0, 0);
+        //setWindowAttr(0.6f);
+
+        getCandySuccessPopupwindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                //setWindowAttr(1f);
+            }
+        });
     }
 
     private void setRefreshListen() {

@@ -5,10 +5,12 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.guang.jiyu.R;
 import com.guang.jiyu.base.BaseEvent;
@@ -62,7 +64,7 @@ public class FastInfoFragment extends BaseFragment {
     private List<FastInformationModel> list;
     private List<InformationWithDateModel> withDateList;
     private FastInfoAdapter informationAdapter;
-
+    private boolean isOpening = true;
     private Message m;
     private Handler handler = new Handler(new Handler.Callback() {
         @Override
@@ -97,6 +99,18 @@ public class FastInfoFragment extends BaseFragment {
                                         break;
                                     case SHARE:
                                         EventBus.getDefault().post(new ShareInformationEvent(list.get(position)));
+                                        break;
+                                    case CONTENT:
+                                        TextView tv = view.findViewById(R.id.tv_content);
+                                        if(isOpening){
+                                            isOpening = false;
+                                            tv.setEllipsize(null);
+                                            tv.setSingleLine(false);
+                                        }else{
+                                            isOpening = true;
+                                            tv.setEllipsize(TextUtils.TruncateAt.END);
+                                            tv.setLines(4);
+                                        }
                                         break;
                                 }
                             }

@@ -32,7 +32,7 @@
             android:id="@+id/tv_invite_code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/string_my_invite_code"
+            android:text="----"
             android:textColor="@color/colorBlack"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/size_50dp"

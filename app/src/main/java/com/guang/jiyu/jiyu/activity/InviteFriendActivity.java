@@ -1,11 +1,14 @@
 package com.guang.jiyu.jiyu.activity;
 
+import android.annotation.TargetApi;
 import android.content.ClipboardManager;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.allen.library.SuperButton;
+import com.blankj.utilcode.util.BarUtils;
 import com.guang.jiyu.R;
 import com.guang.jiyu.base.BaseActivity;
 import com.guang.jiyu.base.Contants;
@@ -62,6 +66,7 @@ public class InviteFriendActivity extends BaseActivity {
 
     private LoadMoreAdapter adapter;
     private Button loadMore;
+    private String invitationCode;
     private int pageNumber = 1;
     private Handler handler = new Handler(new Handler.Callback() {
         @Override
@@ -73,6 +78,9 @@ public class InviteFriendActivity extends BaseActivity {
                         loadMore.setVisibility(View.GONE);
                         tvNoRecord.setVisibility(View.VISIBLE);
                         break;
+                    case Contants.INVITE_FRIEND_code:
+                        tvInviteCode.setText(invitationCode);
+                        break;
                     case Contants.MSGRecord_GET_FAILURE:
 
                         break;
@@ -82,15 +90,17 @@ public class InviteFriendActivity extends BaseActivity {
         }
     });
 
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setView(R.layout.activity_invite_friend);
-
         initTitle();
         //initData();
         initBottomView();
         inviteFriendList();
+
     }
 
     private void inviteFriendList() {
@@ -101,7 +111,7 @@ public class InviteFriendActivity extends BaseActivity {
         RequestBody requestBody = mbody.build();
 
         final Request request = new Request.Builder()
-                .url(LinkParams.REQUEST_URL + "/msg/list")
+                .url(LinkParams.REQUEST_URL + "/invite/list")
                 .addHeader(Contants.AUTHORIZATION, UserInfoUtils.getString(this, Contants.AUTHORIZATION))
                 .post(requestBody)
                 .build();
@@ -115,13 +125,15 @@ public class InviteFriendActivity extends BaseActivity {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String result = response.body().string();
-                handler.sendEmptyMessage(Contants.INVITE_FRIENDrecord_GET_FAILURE);
                 Log.d("result-----", result);
                 try {
                     JSONObject object = new JSONObject(result);
                     if ("200".equals(object.getString("code"))) {
                         JSONObject data = object.getJSONObject("data");
                         JSONArray arr = data.getJSONArray("list");
+                        JSONObject paras = data.getJSONObject("paras");
+                        invitationCode = paras.getString("invitationCode");
+                        handler.sendEmptyMessage(Contants.INVITE_FRIEND_code);
                         if (arr.length() == 0) {
                             handler.sendEmptyMessage(Contants.INVITE_FRIENDrecord_GET_Nodata);
                         } else {

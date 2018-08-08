@@ -44,6 +44,8 @@
                 android:layout_marginLeft="@dimen/size_12dp"
                 android:layout_marginRight="@dimen/size_12dp"
                 android:lineSpacingExtra="@dimen/size_2dp"
+                android:lines="4"
+                android:ellipsize="end"
                 android:text="据 bitcoin 消息，俄罗斯的一位加密货币旷工在试图进口挖矿设备时赵宇了海关的阻止，在上诉后，法院支持海关的决定，并决定禁止进口挖矿设备。俄罗斯方面称，正在研究加密货币、代币发行等细节，下月进行监管阶段。昨日晚间12时左右，BTC再度下跌近400美元，跌至最低点6650美元后微幅反弹，现于6370美元附近震荡，主流币种全部下跌。昨日晚间12时左右，BTC再度下跌近400美元，跌至最低点6650美元"/>
             <!--            <WebView
                             android:id="@+id/web"

@@ -187,12 +187,6 @@ public class MainActivity extends BaseActivity {
             initSharePopWindow(model);
         }
 
-        if(baseEvent instanceof GetCandySuccessEvent){
-            Log.i("tag","-------------------------------------------onEventMainThread");
-            GetCandySuccessEvent getCandySuccessEvent = (GetCandySuccessEvent) baseEvent;
-            AirCandyModel model = getCandySuccessEvent.getAirCandyModel();
-            initGetCandyPopWindow(model);
-        }
 /*        if(baseEvent instanceof FastInformationEvent){
             FastInformationEvent fastInformationEvent = (FastInformationEvent) baseEvent;
             InformationModel model = fastInformationEvent.getFastInformationModel();
@@ -201,28 +195,7 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    private void initGetCandyPopWindow(AirCandyModel model) {
-        getCandySuccessPopupwindow = new GetCandySuccessPopupwindow(this);
-        getCandySuccessPopupwindow.setOnItemClickListener(new GetCandySuccessPopupwindow.OnItemClickListener() {
-            @Override
-            public void setOnItemClick(View v) {
-                switch (v.getId()){
-                    case R.id.iv_close:
-                        getCandySuccessPopupwindow.dismiss();
-                }
-            }
-        });
 
-        getCandySuccessPopupwindow.showAtLocation(MainActivity.this.getWindow().getDecorView(), Gravity.CENTER, 0, 0);
-        //setWindowAttr(0.6f);
-
-        getCandySuccessPopupwindow.setOnDismissListener(new PopupWindow.OnDismissListener() {
-            @Override
-            public void onDismiss() {
-                //setWindowAttr(1f);
-            }
-        });
-    }
 
 
     /**

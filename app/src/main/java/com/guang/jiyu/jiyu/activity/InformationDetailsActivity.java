@@ -10,6 +10,7 @@ import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageView;
 import android.widget.PopupWindow;
 
 import com.guang.jiyu.R;
@@ -25,9 +26,10 @@ import com.guang.jiyu.jiyu.utils.LinkParams;
 import com.guang.jiyu.jiyu.utils.TitleBarUtils;
 import com.guang.jiyu.jiyu.utils.ToastUtils;
 import com.guang.jiyu.jiyu.utils.UserInfoUtils;
-import com.guang.jiyu.jiyu.widget.NoScrollWebView;
 import com.guang.jiyu.jiyu.widget.SharePopupWindow;
 import com.guang.jiyu.jiyu.widget.TitleBar;
+import com.ldoublem.loadingviewlib.view.LVCircularRing;
+import com.ldoublem.loadingviewlib.view.LVNews;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -58,14 +60,19 @@ public class InformationDetailsActivity extends BaseActivity {
     TitleBar titlebar;
     @BindView(R.id.webview)
     WebView webview;
+    @BindView(R.id.iv_collect)
+    ImageView ivCollect;
+    @BindView(R.id.iv_reading_quentity)
+    ImageView ivReadingQuentity;
+    @BindView(R.id.iv_loading)
+    LVNews ivLoading;
 /*    @BindView(R.id.tv_title)
     TextView tvTitle;
     @BindView(R.id.tv_source)
     TextView tvSource;
     @BindView(R.id.tv_times)
     TextView tvTimes;
-    @BindView(R.id.iv_reading_quentity)
-    ImageView ivReadingQuentity;
+
     @BindView(R.id.tv_reading_count)
     TextView tvReadingCount;
     @BindView(R.id.iv_collect)
@@ -124,22 +131,31 @@ public class InformationDetailsActivity extends BaseActivity {
         setView(R.layout.activity_information_details);
         initTitle();
         informationModel = (InformationModel) getIntent().getSerializableExtra("model");
-        Log.i("-----", informationModel.toString());
+        queryInfoDetails();
         webview.loadUrl("http://39.104.98.85:8033/#/news?data=" + informationModel.infoId);
-        //webview.loadUrl("http://www.baidu.com");
-        //webview.loadUrl("https://juejin.im/post/5b50898ef265da0fa21a7f0f");
-        webview.setWebViewClient(new WebViewClient(){
+        final WebSettings settings = webview.getSettings();
+        webview.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
                 view.loadUrl(url);
                 //返回值是true的时候控制去WebView打开，为false调用系统浏览器或第三方浏览器
                 return true;
             }
+
+            @Override
+            public void onPageFinished(WebView view, String url) {
+                super.onPageFinished(view, url);
+                ivLoading.stopAnim();
+                ivLoading.setVisibility(View.GONE);
+                settings.setBlockNetworkImage(false);
+            }
         });
-        WebSettings settings = webview.getSettings();
+
         settings.setJavaScriptEnabled(true);
         settings.setDomStorageEnabled(true);
+        settings.setBlockNetworkImage(true);
         settings.setCacheMode(WebSettings.LOAD_NO_CACHE);
+
 
         //queryInfoDetails();
     }
@@ -167,6 +183,8 @@ public class InformationDetailsActivity extends BaseActivity {
      * 获取文章详情
      */
     private void queryInfoDetails() {
+        ivLoading.setViewColor(getResources().getColor(R.color.gray_3));
+        ivLoading.startAnim();
         JSONObject object = new JSONObject();
         try {
             object.put("infoId", informationModel.getInfoId());
@@ -235,7 +253,6 @@ public class InformationDetailsActivity extends BaseActivity {
 
     @Subscribe
     public void onEventMainThread(BaseEvent baseEvent) {
-
         if (baseEvent instanceof FastInformationEvent) {
             FastInformationEvent fastInformationEvent = (FastInformationEvent) baseEvent;
             InformationModel model = fastInformationEvent.getFastInformationModel();
@@ -313,6 +330,7 @@ public class InformationDetailsActivity extends BaseActivity {
 
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
+
                     String result = response.body().string();
                     Log.d("addCollection-----", result);
                     try {
@@ -331,6 +349,17 @@ public class InformationDetailsActivity extends BaseActivity {
             });
         } catch (JSONException e) {
             e.printStackTrace();
+        }
+    }
+
+    @OnClick({R.id.iv_reading_quentity, R.id.iv_collect})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.iv_reading_quentity:
+                break;
+            case R.id.iv_collect:
+                addCollection();
+                break;
         }
     }
 }

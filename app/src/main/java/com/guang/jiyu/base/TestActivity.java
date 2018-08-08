@@ -20,7 +20,7 @@ public class TestActivity extends BaseActivity {
     @BindView(R.id.tv_test)
     TextView tvTest;
 
-    private boolean isOpening;
+    private boolean isOpening = true;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,16 +30,20 @@ public class TestActivity extends BaseActivity {
     @OnClick(R.id.tv_test)
     public void onViewClicked() {
         if(isOpening){
-            isOpening = true;
-            ViewGroup.LayoutParams params = tvTest.getLayoutParams();
+            isOpening = false;
+            tvTest.setEllipsize(null);
+            tvTest.setSingleLine(false);
+/*            ViewGroup.LayoutParams params = tvTest.getLayoutParams();
             params.height = ViewGroup.LayoutParams.MATCH_PARENT;
-            tvTest.setLayoutParams(params);
+            tvTest.setLayoutParams(params);*/
             //tvTest.setEllipsize(null);
         }else{
-            isOpening = false;
-            ViewGroup.LayoutParams params = tvTest.getLayoutParams();
+            isOpening = true;
+            tvTest.setEllipsize(TextUtils.TruncateAt.END);
+            tvTest.setLines(4);
+/*            ViewGroup.LayoutParams params = tvTest.getLayoutParams();
             params.height = 200;
-            tvTest.setLayoutParams(params);
+            tvTest.setLayoutParams(params);*/
             //tvTest.setEllipsize(TextUtils.TruncateAt.END);
         }
     }

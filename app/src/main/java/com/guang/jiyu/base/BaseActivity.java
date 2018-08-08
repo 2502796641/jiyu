@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.WindowManager;
 
+import com.blankj.utilcode.util.BarUtils;
+import com.blankj.utilcode.util.Utils;
 import com.guang.jiyu.jiyu.event.MessageEvent;
 
 import org.greenrobot.eventbus.EventBus;

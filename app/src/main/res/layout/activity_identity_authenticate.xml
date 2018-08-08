@@ -129,6 +129,8 @@
             android:layout_marginLeft="@dimen/size_60dp"
             />
         </LinearLayout>
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/text_20sp"></LinearLayout>
     </LinearLayout>
 </ScrollView>

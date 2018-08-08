@@ -88,4 +88,5 @@ public class Contants {
     public static final int INVITE_FRIENDrecord_GET_SUCCESS = 0x80;
     public static final int INVITE_FRIENDrecord_GET_FAILURE = 0x81;
     public static final int INVITE_FRIENDrecord_GET_Nodata = 0x82;
+    public static final int INVITE_FRIEND_code = 0x83;
 }

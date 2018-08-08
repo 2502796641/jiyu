@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.TextView;
 
+import com.blankj.utilcode.util.Utils;
 import com.guang.jiyu.R;
 import com.guang.jiyu.base.BaseActivity;
 import com.guang.jiyu.jiyu.utils.TitleBarUtils;
@@ -38,7 +39,5 @@ public class AboutUsActivity extends BaseActivity {
                 finish();
             }
         });
-
-
     }
 }
