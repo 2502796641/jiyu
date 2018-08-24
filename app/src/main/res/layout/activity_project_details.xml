@@ -1,0 +1,466 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/publicity_background_color"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/size_20dp"
+            android:layout_marginRight="@dimen/size_20dp"
+            android:layout_marginTop="@dimen/size_20dp"
+            android:text="@string/project_broadcast_Name_text"
+            android:textColor="@color/publicity_text_color"
+            android:textSize="@dimen/text_20sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/size_20dp"
+            android:layout_marginRight="@dimen/size_20dp"
+            android:layout_marginTop="@dimen/size_10dp"
+            android:layout_weight="1.1"
+            android:lineSpacingExtra="@dimen/size_5dp"
+            android:text="@string/Readby_publicity_text"
+            android:textColor="@color/publicity_text_color"
+            android:textSize="@dimen/text_16sp" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="@dimen/size_300dp"
+            android:layout_height="@dimen/size_150dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/size_30dp"
+            android:layout_marginRight="@dimen/size_30dp"
+            android:layout_marginTop="@dimen/size_15dp"
+            android:layout_weight="2"
+            android:scaleType="fitXY"
+            android:src="@mipmap/icon_publicity_01" />
+
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="@dimen/size_300dp"
+            android:layout_height="@dimen/size_150dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/size_30dp"
+            android:layout_marginRight="@dimen/size_30dp"
+            android:layout_marginTop="@dimen/size_15dp"
+            android:layout_weight="2"
+            android:scaleType="fitXY"
+            android:src="@mipmap/icon_publicity_02" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/size_20dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_30dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:text="@string/project_broadcast_start_date_text"
+                    android:textColor="@color/publicity_text_color"
+                    android:textSize="@dimen/text_16sp" />
+
+                <TextView
+                    android:id="@+id/id_project_broadcast_start_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/size_40dp"
+                    android:layout_weight="1"
+                    android:text="2018-03-04"
+                    android:textColor="@color/publicity_text_color"
+                    android:textSize="@dimen/text_16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_30dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:text="@string/project_broadcast_start_time_text"
+                    android:textColor="@color/publicity_text_color"
+                    android:textSize="@dimen/text_16sp" />
+
+                <TextView
+                    android:id="@+id/id_project_broadcast_start_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/size_40dp"
+                    android:layout_weight="1"
+                    android:text="12:13:52"
+                    android:textColor="@color/publicity_text_color"
+                    android:textSize="@dimen/text_16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_30dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/size_8dp"
+                    android:layout_weight="6"
+                    android:text="@string/project_broadcast_image_text"
+                    android:textColor="@color/publicity_text_color"
+                    android:textSize="@dimen/text_16sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/id_project_broadcast_image"
+                        android:layout_width="@dimen/size_40dp"
+                        android:layout_height="@dimen/size_40dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/size_110dp"
+                        android:src="@mipmap/icon_project_details_logo_1" />
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_30dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:text="@string/project_broadcast_Send_currency_text"
+                    android:textColor="@color/publicity_text_color"
+                    android:textSize="@dimen/text_16sp" />
+
+                <TextView
+                    android:id="@+id/id_project_broadcast_Send_currency"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/size_40dp"
+                    android:layout_weight="1"
+                    android:text="ETH"
+                    android:textColor="@color/publicity_text_color"
+                    android:textSize="@dimen/text_16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_30dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:text="@string/project_broadcast_Send_object_text"
+                    android:textColor="@color/publicity_text_color"
+                    android:textSize="@dimen/text_16sp" />
+
+                <TextView
+                    android:id="@+id/id_project_broadcast_Send_object"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/size_40dp"
+                    android:layout_weight="1"
+                    android:text="注册用户"
+                    android:textColor="@color/publicity_text_color"
+                    android:textSize="@dimen/text_16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_30dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:text="@string/project_broadcast_Sending_limit_text"
+                    android:textColor="@color/publicity_text_color"
+                    android:textSize="@dimen/text_16sp" />
+
+                <TextView
+                    android:id="@+id/id_project_broadcast_Sending_limit"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/size_40dp"
+                    android:layout_weight="1"
+                    android:text="无"
+                    android:textColor="@color/publicity_text_color"
+                    android:textSize="@dimen/text_16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/project_broadcast_sent_text"
+                    android:textColor="@color/publicity_text_color"
+                    android:textSize="@dimen/text_16sp" />
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/size_115dp"
+                    android:text="@string/project_broadcast_Everybody_get_text"
+                    android:textColor="@color/publicity_text_color"
+                    android:textSize="@dimen/text_16sp" />
+
+                <TextView
+                    android:id="@+id/id_project_broadcast_sent_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="20"
+                    android:textColor="@color/publicity_text_color"
+                    android:textSize="@dimen/text_16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/project_broadcast_konget"
+                    android:textColor="@color/publicity_text_color"
+                    android:textSize="@dimen/text_16sp" />
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/size_115dp"
+                    android:text="@string/project_broadcast_Get_the_number_text"
+                    android:textColor="@color/publicity_text_color"
+                    android:textSize="@dimen/text_16sp" />
+
+                <TextView
+                    android:id="@+id/id_project_broadcast_sent_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="100"
+                    android:textColor="@color/publicity_text_color"
+                    android:textSize="@dimen/text_16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/project_broadcast_Get_set_up_text"
+                    android:textColor="@color/publicity_text_color"
+                    android:textSize="@dimen/text_16sp" />
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/size_100dp"
+                  android:text="@string/project_broadcast_Everybody_get_text"
+                    android:textColor="@color/publicity_text_color"
+                    android:textSize="@dimen/text_16sp" />
+
+                <TextView
+                    android:id="@+id/id_project_broadcast_Get_set_up_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="20"
+                    android:textColor="@color/publicity_text_color"
+                    android:textSize="@dimen/text_16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/project_broadcast_konget_1"
+                    android:textColor="@color/publicity_text_color"
+                    android:textSize="@dimen/text_16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/size_115dp"
+                    android:text="@string/project_broadcast_draw_time_text"
+                    android:textColor="@color/publicity_text_color"
+                    android:textSize="@dimen/text_16sp" />
+
+                <TextView
+                    android:id="@+id/id_project_broadcast_Get_set_up_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1小时"
+                    android:textColor="@color/publicity_text_color"
+                    android:textSize="@dimen/text_16sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_10dp"
+            android:background="#F5F5F5"
+            />
+
+        <LinearLayout
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_140dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_marginLeft="@dimen/size_20dp"
+                android:layout_marginRight="@dimen/size_20dp"
+                android:layout_marginTop="@dimen/size_10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/project_broadcast_Total_cost_text"
+                    android:textColor="@color/publicity_text_color"
+                    android:textSize="@dimen/text_16sp" />
+
+                <TextView
+                    android:id="@+id/id_project_broadcast_Total_cost"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="20 x 100 =2000"
+                    android:textColor="@color/publicity_text_color"
+                    android:textSize="@dimen/text_16sp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginLeft="@dimen/size_20dp"
+                android:layout_marginRight="@dimen/size_20dp"
+                android:layout_marginTop="@dimen/size_10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/project_broadcast_service_charge_text"
+                    android:textColor="@color/publicity_text_color"
+                    android:textSize="@dimen/text_16sp" />
+
+                <TextView
+                    android:id="@+id/id_project_broadcast_service_charge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2000 x 0.1 =20"
+                    android:textColor="@color/publicity_text_color"
+                    android:textSize="@dimen/text_16sp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginLeft="@dimen/size_20dp"
+                android:layout_marginRight="@dimen/size_20dp"
+                android:layout_marginTop="@dimen/size_10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/project_broadcast_actual_costs_text"
+                    android:textColor="@color/publicity_text_color"
+                    android:textSize="@dimen/text_16sp" />
+
+                <TextView
+                    android:id="@+id/id_project_broadcast_actual_costs"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2000 + 20 =2020"
+                    android:textColor="@color/publicity_text_color"
+                    android:textSize="@dimen/text_16sp"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentEnd="true" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_20dp"
+            android:background="#F5F5F5"
+            />
+    </LinearLayout>
+
+</ScrollView>

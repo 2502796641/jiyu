@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+    <View
+        style="@style/hor_view_10dp_gray_2"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/size_15dp"
+        android:text="区块链从15年火到18年，但是你却仍对区块链一知半解？再不懂区块链你就OUT啦！"
+        android:textColor="@color/colorBlack"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/size_15dp"
+        android:layout_marginRight="@dimen/size_15dp"
+        android:text="免费 FREE
+区块链100问系列动画对区块链进行系统梳理，适合想要由浅入深、全面系统了解区块链的人。轻松了解区块链~"
+        android:textSize="@dimen/text_13sp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_15dp"
+        android:layout_marginLeft="@dimen/size_15dp"
+        android:layout_marginRight="@dimen/size_15dp"
+        android:text="课程概述
+火币集团打造业内首个讲解区块链的系列小动画《区块链100问》，由新浪科技联合出品。每集学懂一个知识点，《区块链100问》让你变身区块链达人！"
+        android:textSize="@dimen/text_13sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="鸣谢机构/讲师"
+        android:layout_margin="@dimen/size_15dp"
+        android:textColor="@color/colorBlack"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_50dp">
+        <ImageView
+            android:id="@+id/iv_huobi"
+            android:layout_width="@dimen/size_40dp"
+            android:layout_height="@dimen/size_40dp"
+            android:src="@mipmap/icon_huobi"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/size_20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="火币集团"
+            android:textSize="@dimen/text_12sp"
+            android:layout_toRightOf="@+id/iv_huobi"
+            android:layout_marginTop="@dimen/size_5dp"
+            android:layout_marginLeft="@dimen/size_10dp"
+            android:textColor="@color/colorBlack"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="区块链科普小动画"
+            android:textSize="@dimen/text_12sp"
+            android:layout_toRightOf="@+id/iv_huobi"
+            android:layout_marginTop="@dimen/size_25dp"
+            android:layout_marginLeft="@dimen/size_10dp"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_50dp">
+        <ImageView
+            android:id="@+id/iv_xinlang"
+            android:layout_width="@dimen/size_40dp"
+            android:layout_height="@dimen/size_40dp"
+            android:src="@mipmap/icon_xinlang"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/size_20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="新浪科技"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/text_12sp"
+            android:layout_toRightOf="@+id/iv_xinlang"
+            android:layout_marginTop="@dimen/size_5dp"
+            android:layout_marginLeft="@dimen/size_10dp"
+            android:textColor="@color/colorBlack"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_30dp"
+        android:background="@color/white"></LinearLayout>
+</LinearLayout>

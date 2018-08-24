@@ -37,7 +37,7 @@
                 android:layout_width="@dimen/size_120dp"
                 android:layout_height="@dimen/size_35dp"
                 stv:sCornersRadius="@dimen/size_8dp"
-                stv:sSolidColor="@color/yellow_2"
+                stv:sSolidColor="@color/theme_color"
                 android:text="@string/string_information"
                 android:textSize="@dimen/text_16sp"
                 android:textColor="@color/colorBlack"

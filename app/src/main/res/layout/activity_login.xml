@@ -74,7 +74,7 @@
             android:layout_width="@dimen/size_280dp"
             android:layout_height="@dimen/size_40dp"
             stv:sCornersRadius="@dimen/size_5dp"
-            stv:sSolidColor="@color/yellow_2"
+            stv:sSolidColor="@color/theme_color"
             android:text="@string/string_login"
             android:textSize="@dimen/text_16sp"
             android:textColor="@color/white"
@@ -89,7 +89,7 @@
             android:text="@string/string_register"
             android:layout_alignLeft="@+id/btn_login"
             android:layout_below="@+id/btn_login"
-            android:textColor="@color/yellow_2"
+            android:textColor="@color/theme_color"
             android:layout_marginTop="@dimen/size_15dp"/>
         <TextView
             android:id="@+id/tv_forget_pwd"
@@ -98,7 +98,7 @@
             android:text="@string/string_forget_pwd"
             android:layout_alignRight="@+id/btn_login"
             android:layout_below="@+id/btn_login"
-            android:textColor="@color/yellow_2"
+            android:textColor="@color/theme_color"
             android:layout_marginTop="@dimen/size_15dp"/>
     </RelativeLayout>
 

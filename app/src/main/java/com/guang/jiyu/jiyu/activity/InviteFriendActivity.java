@@ -98,8 +98,8 @@ public class InviteFriendActivity extends BaseActivity {
         setView(R.layout.activity_invite_friend);
         initTitle();
         //initData();
-        initBottomView();
-        inviteFriendList();
+        //initBottomView();
+        //inviteFriendList();
 
     }
 
@@ -142,13 +142,10 @@ public class InviteFriendActivity extends BaseActivity {
                             m.obj = model;
                             handler.sendMessage(m);*/
                         }
-
                     }
-
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
             }
         });
     }

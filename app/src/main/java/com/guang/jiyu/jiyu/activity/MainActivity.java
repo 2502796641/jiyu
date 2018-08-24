@@ -1,6 +1,8 @@
 package com.guang.jiyu.jiyu.activity;
 
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -11,11 +13,14 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.chaychan.library.BottomBarItem;
 import com.chaychan.library.BottomBarLayout;
 import com.guang.jiyu.R;
@@ -25,12 +30,14 @@ import com.guang.jiyu.base.BaseFragment;
 import com.guang.jiyu.base.Contants;
 import com.guang.jiyu.jiyu.adapter.FragmentAdapter;
 import com.guang.jiyu.jiyu.event.GetCandySuccessEvent;
+import com.guang.jiyu.jiyu.event.GetPictureEvent;
 import com.guang.jiyu.jiyu.event.MessageEvent;
 import com.guang.jiyu.jiyu.event.ShareInformationEvent;
 import com.guang.jiyu.jiyu.event.NewsFlashRefreshEvent;
 import com.guang.jiyu.jiyu.fragment.HomeFragment;
 import com.guang.jiyu.jiyu.fragment.InformationFragment;
 import com.guang.jiyu.jiyu.fragment.MarketFragmant;
+import com.guang.jiyu.jiyu.fragment.NewProjectFragment;
 import com.guang.jiyu.jiyu.fragment.ProjectFragment;
 import com.guang.jiyu.jiyu.fragment.UserFragment;
 import com.guang.jiyu.jiyu.model.AirCandyModel;
@@ -42,10 +49,14 @@ import com.guang.jiyu.jiyu.widget.SharePopupWindow;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import me.iwf.photopicker.PhotoPicker;
+import me.iwf.photopicker.PhotoPreview;
+import me.iwf.photopicker.utils.AndroidLifecycleUtils;
 import q.rorbin.badgeview.QBadgeView;
 
 public class MainActivity extends BaseActivity {
@@ -74,8 +85,9 @@ public class MainActivity extends BaseActivity {
     private InformationFragment informationFragment;
     private MarketFragmant marketFragmant;
     private ProjectFragment projectFragment;
+    private NewProjectFragment newProjectFragment;
     private UserFragment userFragment;
-
+    boolean canLoadImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -172,12 +184,17 @@ public class MainActivity extends BaseActivity {
 
     @Subscribe
     public void onEventMainThread(BaseEvent baseEvent) {
-
         if(baseEvent instanceof MessageEvent){
             MessageEvent messageEvent = (MessageEvent) baseEvent;
             switch (messageEvent.getMessage()){
                 case Contants.EVENT_INFORMATION:
                     bbl.setCurrentItem(1);
+                    break;
+                case Contants.EVENT_CHANGE_BLIGHTNESS:
+                    setWindowAttr(0.6f);
+                    break;
+                case Contants.EVENT_RECOVER_BLIGHTNESS:
+                    setWindowAttr(1f);
                     break;
             }
         }
@@ -185,6 +202,15 @@ public class MainActivity extends BaseActivity {
             ShareInformationEvent shareInformationEvent = (ShareInformationEvent) baseEvent;
             FastInformationModel model = shareInformationEvent.getInformationModel();
             initSharePopWindow(model);
+        }
+
+        if(baseEvent instanceof GetPictureEvent){
+            GetPictureEvent getPictureEvent = (GetPictureEvent) baseEvent;
+            ImageView iv = getPictureEvent.getIv();
+            canLoadImage = AndroidLifecycleUtils.canLoadImage(iv.getContext());
+            PhotoPicker.builder()
+                    .setPhotoCount(1)
+                    .start(MainActivity.this);
         }
 
 /*        if(baseEvent instanceof FastInformationEvent){
@@ -195,7 +221,32 @@ public class MainActivity extends BaseActivity {
 
     }
 
+    @Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK &&
+                (requestCode == PhotoPicker.REQUEST_CODE || requestCode == PhotoPreview.REQUEST_CODE)) {
 
+            List<String> photos = null;
+            if (data != null) {
+                photos = data.getStringArrayListExtra(PhotoPicker.KEY_SELECTED_PHOTOS);
+            }
+            //selectedPhotos.clear();
+
+            if (photos != null) {
+                //selectedPhotos.addAll(photos);
+            }
+            Log.i("canload","-----" + canLoadImage);
+            Uri uri = Uri.fromFile(new File(photos.get(0)));
+            EventBus.getDefault().post(new GetPictureEvent(uri));
+            if (canLoadImage) {
+                final RequestOptions options = new RequestOptions();
+                options.centerCrop()
+                        .placeholder(R.drawable.__picker_ic_photo_black_48dp)
+                        .error(R.drawable.__picker_ic_broken_image_black_48dp);
+                }
+            //photoAdapter.notifyDataSetChanged();
+        }
+    }
 
 
     /**
@@ -206,17 +257,16 @@ public class MainActivity extends BaseActivity {
          informationFragment = new InformationFragment();
          marketFragmant = new MarketFragmant();
          projectFragment = new ProjectFragment();
+        newProjectFragment = new NewProjectFragment();
          userFragment = new UserFragment();
         mFragmentList.add(homeFragment);
         mFragmentList.add(informationFragment);
         mFragmentList.add(marketFragmant);
-        mFragmentList.add(projectFragment);
+        mFragmentList.add(newProjectFragment);
         mFragmentList.add(userFragment);
         vpContent.setAdapter(new FragmentAdapter(getSupportFragmentManager(), mFragmentList));
         vpContent.setOffscreenPageLimit(5);//设置缓存页面的个数
         bbl.setViewPager(vpContent);
-
-
     }
 
     public void showCenterPopupWindow() {

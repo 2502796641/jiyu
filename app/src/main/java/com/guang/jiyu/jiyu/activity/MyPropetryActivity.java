@@ -6,13 +6,17 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.guang.jiyu.R;
 import com.guang.jiyu.base.BaseActivity;
 import com.guang.jiyu.base.Contants;
+import com.guang.jiyu.jiyu.adapter.ProretryTypeAdapter;
+import com.guang.jiyu.jiyu.model.ProretryTypeModel;
 import com.guang.jiyu.jiyu.model.WalletModel;
 import com.guang.jiyu.jiyu.net.OkHttpManage;
 import com.guang.jiyu.jiyu.utils.ActivityUtils;
@@ -26,6 +30,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -57,8 +63,12 @@ public class MyPropetryActivity extends BaseActivity {
     TitleBar titlebar;
     @BindView(R.id.rl_candy_box)
     RelativeLayout rlCandyBox;
+    @BindView(R.id.lv_propetry_type)
+    ListView lvPropetryType;
 
     private WalletModel model;
+    private ProretryTypeAdapter proretryTypeAdapter;
+    private List<ProretryTypeModel> list;
 
     private Handler handler = new Handler(new Handler.Callback() {
         @Override
@@ -66,7 +76,7 @@ public class MyPropetryActivity extends BaseActivity {
             if (message != null) {
                 switch (message.what) {
                     case Contants.WALLET_GET_SUCCESS:
-                         model = (WalletModel) message.obj;
+                        model = (WalletModel) message.obj;
                         tvBalance.setText(model.getMbtc() + "");
                         break;
                     case Contants.WALLET_GET_FAILURE:
@@ -84,6 +94,26 @@ public class MyPropetryActivity extends BaseActivity {
         setView(R.layout.activity_my_propetry);
         initTitle();
         getWalletInfo();
+        initList();
+    }
+
+    private void initList() {
+        list = new ArrayList<>();
+        for(int i = 0;i < 10;i++){
+            ProretryTypeModel model = new ProretryTypeModel();
+            model.type = "AAAAA";
+            model.count = "99999";
+            list.add(model);
+        }
+        proretryTypeAdapter = new ProretryTypeAdapter(this,list);
+        lvPropetryType.setAdapter(proretryTypeAdapter);
+        proretryTypeAdapter.notifyDataSetChanged();
+        lvPropetryType.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                ActivityUtils.startActivityWithModel(MyPropetryActivity.this,ProretryTypeDetailsActivity.class,list.get(i));
+            }
+        });
     }
 
 
@@ -116,7 +146,7 @@ public class MyPropetryActivity extends BaseActivity {
                     if ("200".equals(object.getString("code"))) {
                         JSONObject data = object.getJSONObject("data");
                         JSONObject wallet = data.getJSONObject("wallet");
-                         model = new WalletModel();
+                        model = new WalletModel();
                         model.walletId = wallet.getInt("walletId");
                         model.mbtc = wallet.getInt("mbtc");
                         model.status = wallet.getInt("status");
@@ -142,18 +172,23 @@ public class MyPropetryActivity extends BaseActivity {
                 finish();
             }
         });
+        titlebar.addAction(new TitleBar.TextAction("钱包记录") {
+            @Override
+            public void performAction(View view) {
+                ActivityUtils.startActivity(MyPropetryActivity.this,MyPropetryRecordActivity.class);
+            }
+        });
     }
 
     @OnClick({R.id.ll_balance_details, R.id.ll_candy_box})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.ll_balance_details:
-                ActivityUtils.startActivityWithModel(this, BalanceDetailsActivity.class,model);
+                ActivityUtils.startActivityWithModel(this, BalanceDetailsActivity.class, model);
                 break;
             case R.id.ll_candy_box:
                 break;
         }
     }
-
 
 }

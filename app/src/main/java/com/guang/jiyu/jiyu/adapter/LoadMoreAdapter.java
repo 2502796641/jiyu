@@ -90,7 +90,7 @@ public class LoadMoreAdapter extends BaseAdapter {
             }
             int len = stateHolder.tv_getHashrate.getText().toString().length();
             SpannableStringBuilder ssb = new SpannableStringBuilder(stateHolder.tv_getHashrate.getText().toString());
-            ssb.setSpan(new ForegroundColorSpan(context.getResources().getColor(R.color.yellow_2)), 3, len,
+            ssb.setSpan(new ForegroundColorSpan(context.getResources().getColor(R.color.theme_color)), 3, len,
                     Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
             stateHolder.tv_getHashrate.setText(ssb);
             stateHolder.tv_name.setText("选项"+datas.get(position));

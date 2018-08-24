@@ -13,6 +13,7 @@ import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
 
+import com.allen.library.SuperButton;
 import com.guang.jiyu.R;
 import com.guang.jiyu.base.BaseActivity;
 import com.guang.jiyu.base.BaseEvent;
@@ -28,7 +29,6 @@ import com.guang.jiyu.jiyu.utils.ToastUtils;
 import com.guang.jiyu.jiyu.utils.UserInfoUtils;
 import com.guang.jiyu.jiyu.widget.SharePopupWindow;
 import com.guang.jiyu.jiyu.widget.TitleBar;
-import com.ldoublem.loadingviewlib.view.LVCircularRing;
 import com.ldoublem.loadingviewlib.view.LVNews;
 
 import org.greenrobot.eventbus.EventBus;
@@ -66,6 +66,8 @@ public class InformationDetailsActivity extends BaseActivity {
     ImageView ivReadingQuentity;
     @BindView(R.id.iv_loading)
     LVNews ivLoading;
+    @BindView(R.id.btn_already_read)
+    SuperButton btnAlreadyRead;
 /*    @BindView(R.id.tv_title)
     TextView tvTitle;
     @BindView(R.id.tv_source)
@@ -352,13 +354,16 @@ public class InformationDetailsActivity extends BaseActivity {
         }
     }
 
-    @OnClick({R.id.iv_reading_quentity, R.id.iv_collect})
+    @OnClick({R.id.iv_reading_quentity, R.id.iv_collect,R.id.btn_already_read})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_reading_quentity:
                 break;
             case R.id.iv_collect:
                 addCollection();
+                break;
+            case R.id.btn_already_read:
+                ToastUtils.showToast("already reading");
                 break;
         }
     }

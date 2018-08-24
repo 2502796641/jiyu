@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/rl_proretry_detials"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_60dp"
+        android:background="@color/white">
+        <TextView
+            android:id="@+id/tv_proretry_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/string_candy_box"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/text_16sp"
+            android:layout_marginLeft="@dimen/size_25dp"/>
+        <LinearLayout
+            android:id="@+id/ll_candy_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/size_5dp">
+            <TextView
+                android:id="@+id/tv_proretry_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="11111"
+                android:textSize="@dimen/text_16sp"
+                android:layout_marginRight="@dimen/size_5dp"/>
+            <ImageView
+                android:layout_width="@dimen/size_20dp"
+                android:layout_height="@dimen/size_20dp"
+                android:src="@mipmap/icon_right_arrow_black"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

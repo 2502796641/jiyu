@@ -27,7 +27,7 @@
                 android:layout_width="@dimen/size_80dp"
                 android:layout_height="@dimen/size_35dp"
                 stv:sCornersRadius="@dimen/size_8dp"
-                stv:sSolidColor="@color/yellow_2"
+                stv:sSolidColor="@color/theme_color"
                 android:text="@string/string_fast_information"
                 android:textSize="@dimen/text_16sp"
                 android:textColor="@color/white"

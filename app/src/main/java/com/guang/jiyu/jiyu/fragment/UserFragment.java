@@ -119,13 +119,14 @@ public class UserFragment extends BaseFragment {
      * @param objectClass
      */
     private void checkUserState(Class objectClass) {
-        if(!UserInfoUtils.isUserLogin(getContext())){
+        ActivityUtils.startActivity(getContext(), objectClass);
+/*        if(!UserInfoUtils.isUserLogin(getContext())){
             ToastUtils.showToast("请先登录");
             ActivityUtils.startActivity(getContext(), LoginActivity.class);
             return;
         }else{
             ActivityUtils.startActivity(getContext(), objectClass);
-        }
+        }*/
     }
 
     @Override

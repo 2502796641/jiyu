@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/draw_money_color"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/publicity_background_color"
+            android:padding="@dimen/size_20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/draw_money_name_text"
+                android:textColor="@color/publicity_text_color"
+                android:textSize="@dimen/text_18sp" />
+
+            <TextView
+                android:id="@+id/id_draw_money_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:text="ETH"
+                android:textColor="@color/publicity_text_color"
+                android:textSize="@dimen/text_18sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/size_3dp"
+            android:layout_weight="1"
+            android:background="@color/publicity_background_color"
+            android:padding="@dimen/size_20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/draw_money_balance_text"
+                android:textColor="@color/publicity_text_color"
+                android:textSize="@dimen/text_18sp" />
+
+            <TextView
+                android:id="@+id/id_draw_money_balance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:text="28357.33"
+                android:textColor="@color/publicity_text_color"
+                android:textSize="@dimen/text_18sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/size_3dp"
+            android:layout_weight="1"
+            android:background="@color/publicity_background_color"
+            android:padding="@dimen/size_20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/draw_money_market_value_text"
+                android:textColor="@color/publicity_text_color"
+                android:textSize="@dimen/text_18sp" />
+
+            <TextView
+                android:id="@+id/id_draw_money_market_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:text="≈￥28357.33"
+                android:textColor="@color/publicity_text_color"
+                android:textSize="@dimen/text_18sp" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="@dimen/size_3dp"
+        android:background="@color/publicity_background_color"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_20dp"
+            android:layout_marginRight="@dimen/size_20dp"
+            android:layout_marginTop="@dimen/size_20dp"
+            android:text="@string/draw_money_synopsis_text"
+            android:textColor="@color/publicity_text_color"
+            android:textSize="@dimen/text_18sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/size_20dp"
+            android:layout_marginRight="@dimen/size_20dp"
+            android:layout_marginTop="@dimen/size_10dp"
+            android:lineSpacingExtra="@dimen/size_5dp"
+            android:text="@string/Readby_publicity_text"
+            android:textColor="@color/publicity_text_color"
+            android:textSize="@dimen/text_14sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        >
+
+
+    </LinearLayout>
+</LinearLayout>

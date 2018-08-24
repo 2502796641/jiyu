@@ -63,7 +63,7 @@ public class HowToGetHashrateFragment extends BaseFragment {
      */
     private void changeTxtColor() {
         SpannableStringBuilder ssb = new SpannableStringBuilder(tv1.getText().toString());
-        ssb.setSpan(new ForegroundColorSpan(getContext().getResources().getColor(R.color.yellow_2)), 6, 7,
+        ssb.setSpan(new ForegroundColorSpan(getContext().getResources().getColor(R.color.theme_color)), 6, 7,
                 Spannable.SPAN_EXCLUSIVE_INCLUSIVE);
         tv1.setText(ssb);
         tv2.setText(ssb);

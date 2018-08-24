@@ -131,6 +131,34 @@
         <activity
             android:name=".jiyu.activity.MessageRecordActivity"
             android:screenOrientation="portrait" />
+        <activity
+            android:name=".jiyu.activity.ReadBroadCastActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".jiyu.activity.HashrateRecordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".jiyu.activity.MyPropetryRecordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".jiyu.activity.ProretryTypeDetailsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".jiyu.activity.NewHandExplainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".jiyu.activity.WhatIsBlackchainActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".jiyu.activity.ProjectPaySuccessActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".jiyu.activity.ProjectIssueRecordActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".jiyu.activity.ProjectIssueDetailsActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 

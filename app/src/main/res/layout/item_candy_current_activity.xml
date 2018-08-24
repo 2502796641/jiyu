@@ -51,7 +51,7 @@
         stv:sSolidColor="@color/white"
         android:text="@string/string_get_award"
         android:textSize="@dimen/text_16sp"
-        android:textColor="@color/yellow_2"
+        android:textColor="@color/theme_color"
         android:layout_alignRight="@+id/tv_content"
         android:layout_marginTop="@dimen/size_20dp"
         />

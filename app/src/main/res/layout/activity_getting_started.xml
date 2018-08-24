@@ -7,7 +7,8 @@
         android:id="@+id/titlebar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-
+    <View
+        style="@style/hor_view_1dp"/>
     <RelativeLayout
         android:id="@+id/rl_how_to_get_hashrate"
         android:layout_width="match_parent"
@@ -17,7 +18,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/string_how_to_get_hashrate"
+            android:text="什么是区块链？"
             android:layout_centerVertical="true"
             android:textSize="@dimen/text_16sp"
             android:layout_marginLeft="@dimen/size_20dp"/>
@@ -44,7 +45,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/string_hashrate_update_explain"
+            android:text="区块链的应用场景"
             android:layout_centerVertical="true"
             android:textSize="@dimen/text_16sp"
             android:layout_marginLeft="@dimen/size_20dp"/>

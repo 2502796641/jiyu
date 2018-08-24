@@ -9,12 +9,21 @@
         android:id="@+id/titlebar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-
-    <ImageView
+        <View
+            style="@style/hor_view_1dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="邀约规则"
+            android:textSize="@dimen/text_16sp"
+            android:layout_marginLeft="@dimen/size_10dp"
+            android:layout_marginTop="@dimen/size_10dp"/>
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size_120dp"
-        android:src="@mipmap/icon_invite_friend_bg"
-        android:scaleType="fitXY"/>
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/size_10dp"
+        android:text="@string/string_invite_friend_rule"
+        android:lineSpacingExtra="@dimen/size_3dp"/>
         <View
             style="@style/hor_view_10dp_gray_2"/>
     <RelativeLayout
@@ -42,7 +51,7 @@
             android:layout_width="@dimen/size_100dp"
             android:layout_height="@dimen/size_35dp"
             stv:sCornersRadius="@dimen/size_5dp"
-            stv:sSolidColor="@color/yellow_2"
+            stv:sSolidColor="@color/theme_color"
             android:text="@string/string_copy_invite_code"
             android:textSize="@dimen/text_16sp"
             android:textColor="@color/colorBlack"

@@ -117,7 +117,7 @@ public class RankListActivity extends BaseActivity {
     private void setBtnAttr(SuperButton btn_1, SuperButton btn_2) {
         btn_1.setShapeType(SuperButton.RECTANGLE)
                 .setShapeCornersRadius(8)
-                .setShapeSolidColor(setColor(R.color.yellow_2))
+                .setShapeSolidColor(setColor(R.color.theme_color))
                 .setUseShape();
         btn_1.setTextColor(setColor(R.color.white));
         btn_2.setShapeType(SuperButton.RECTANGLE)

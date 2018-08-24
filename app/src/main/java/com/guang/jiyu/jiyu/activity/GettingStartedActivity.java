@@ -48,12 +48,10 @@ public class GettingStartedActivity extends BaseActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.rl_how_to_get_hashrate:
-                ActivityUtils.startActivity(this,HashrateExplainActivity.class);
-                finish();
+                ActivityUtils.startActivity(this,WhatIsBlackchainActivity.class);
                 break;
             case R.id.rl_hashrate_update_explain:
-                ActivityUtils.startActivity(this,HashrateExplainActivity.class);
-                finish();
+                ActivityUtils.startActivity(this,NewHandExplainActivity.class);
                 break;
         }
     }

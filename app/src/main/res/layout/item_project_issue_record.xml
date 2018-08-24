@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_70dp"
+        android:background="@color/white">
+        <TextView
+            android:id="@+id/tv_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="发布量2000"
+            android:textSize="@dimen/text_16sp"
+            android:textColor="@color/colorBlack"
+            android:layout_marginTop="@dimen/size_10dp"
+            android:layout_marginLeft="@dimen/size_10dp"/>
+
+        <TextView
+            android:id="@+id/tv_updatetime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2000:00:00 19:19:11"
+            android:layout_below="@+id/tv_count"
+            android:layout_marginTop="@dimen/size_10dp"
+            android:layout_marginLeft="@dimen/size_15dp"/>
+
+        <ImageView
+            android:layout_width="@dimen/size_20dp"
+            android:layout_height="@dimen/size_20dp"
+            android:src="@mipmap/icon_right_arrow"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"/>
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

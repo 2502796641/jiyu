@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.guang.jiyu.jiyu.widget.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_40dp"
+        android:layout_marginTop="@dimen/size_15dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="@string/string_whatis_blackchain"
+            android:textColor="@color/colorBlack"
+            android:textSize="@dimen/text_16sp"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/size_15dp"
+        android:textSize="@dimen/text_14sp"
+        android:textColor="@color/colorBlack"
+        android:lineSpacingExtra="@dimen/size_5dp"
+        android:text="@string/string_MBTC_contents"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/size_15dp"
+        android:textSize="@dimen/text_14sp"
+        android:textColor="@color/colorBlack"
+        android:lineSpacingExtra="@dimen/size_5dp"
+        android:text="@string/string_MBTC_contents"/>
+</LinearLayout>

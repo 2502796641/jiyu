@@ -19,6 +19,8 @@ public class Contants {
     public static final String TAG_INVITE_REMARK = "INVITE_REMARK";//邀请记录
     public static final String TAG_GETTING_CANDY_RECORD = "GETTING_CANDY_RECORD";//糖果获取记录
     public static final String EVENT_INFORMATION = "HASHRATE_RECORD";
+    public static final String EVENT_CHANGE_BLIGHTNESS = "EVENT_CHANGE_BLIGHTNESS";//调整屏幕亮度
+    public static final String EVENT_RECOVER_BLIGHTNESS = "EVENT_RECOVER_BLIGHTNESS";//恢复屏幕亮度
 
 
 

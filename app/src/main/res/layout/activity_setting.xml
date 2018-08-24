@@ -185,7 +185,7 @@
             android:layout_width="@dimen/size_240dp"
             android:layout_height="@dimen/size_40dp"
             stv:sCornersRadius="@dimen/size_5dp"
-            stv:sSolidColor="@color/yellow_2"
+            stv:sSolidColor="@color/theme_color"
             android:text="@string/string_account_exit"
             android:textSize="@dimen/text_16sp"
             android:textColor="@color/white"

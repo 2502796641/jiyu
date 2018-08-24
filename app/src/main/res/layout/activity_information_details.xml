@@ -64,6 +64,19 @@
                     android:layout_height="wrap_content"
                     android:text=""
                     android:layout_alignParentRight="true"/>
+
+                <com.allen.library.SuperButton
+                    android:id="@+id/btn_already_read"
+                    android:layout_width="@dimen/size_120dp"
+                    android:layout_height="@dimen/size_30dp"
+                    stv:sCornersRadius="@dimen/size_5dp"
+                    stv:sSolidColor="@color/theme_color"
+                    android:text="我已阅读"
+                    android:textSize="@dimen/text_16sp"
+                    android:textColor="@color/white"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/size_20dp"
+                    android:layout_below="@id/ll_pwd"/>
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -227,7 +240,7 @@
                             stv:sCornersRadius="@dimen/size_10dp"
                             android:layout_marginLeft="@dimen/size_5dp"
                             android:layout_centerVertical="true"
-                            stv:sSolidColor="@color/yellow_2"
+                            stv:sSolidColor="@color/theme_color"
                             android:layout_toRightOf="@+id/iv_bite"
                             android:text="比特币"
                             android:textSize="@dimen/text_12sp"

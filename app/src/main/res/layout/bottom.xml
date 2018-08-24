@@ -9,6 +9,6 @@
        android:layout_height="wrap_content"
        android:id="@+id/load"
        android:text="加载更多"
-       android:background="@null"/>
+       android:background="@color/white"/>
 
 </LinearLayout>

@@ -72,12 +72,10 @@ public class FastInfoFragment extends BaseFragment {
             if(message != null){
                 switch (message.what){
                     case Contants.FASTINFO_REFRESH_SUCCESS:
-
                         ToastUtils.showToast("刷新成功");
                         pullRefresh.finishRefresh();
                         pullRefresh.finishLoadMore();
                         list = (List<FastInformationModel>) message.obj;
-
                         for(int i = 0;i <list.size();i++){
                             Log.d("list--------","" + list.get(i).toString());
                         }
@@ -157,7 +155,6 @@ public class FastInfoFragment extends BaseFragment {
                     Log.d("onFailure-----", e.toString());
                     handler.sendEmptyMessage(Contants.INFO_GET_FAILURE);
                 }
-
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
                     String result = response.body().string();
@@ -211,7 +208,6 @@ public class FastInfoFragment extends BaseFragment {
                             bulishCount = String.valueOf(Integer.parseInt(bulishCount) + 1);
                             list.get(position).bulish = bulishCount;
                             handler.sendEmptyMessage(Contants.INFO_BULISH);
-
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -276,7 +272,6 @@ public class FastInfoFragment extends BaseFragment {
                         //有数据
                         if ("200".equals(object.getString("code"))) {
                             withDateList = new ArrayList<>();
-
                             JSONArray data = object.getJSONArray("data");
                             for(int i = 0;i < data.length();i++){
                                 JSONObject jb = new JSONObject(data.get(i).toString());

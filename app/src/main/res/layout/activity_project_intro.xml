@@ -31,7 +31,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_below="@id/iv_logo"
                 android:text=""
-                android:textColor="@color/yellow_2"
+                android:textColor="@color/theme_color"
                 android:textStyle="bold"
                 android:layout_marginTop="@dimen/size_5dp"
                 android:textSize="@dimen/text_16sp"/>
