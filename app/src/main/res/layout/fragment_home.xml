@@ -47,7 +47,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="算力：6666"
+                android:text="算力："
                 android:padding="@dimen/size_5dp"
                 android:textColor="@color/white"
                 android:textSize="@dimen/text_13sp"
@@ -56,7 +56,7 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:layout_weight="0.5"/>
             <LinearLayout
                 android:id="@+id/ll_wallet"
                 android:layout_width="0dp"
@@ -67,11 +67,11 @@
                 <ImageView
                     android:layout_width="@dimen/size_25dp"
                     android:layout_height="@dimen/size_25dp"
-                    android:src="@mipmap/icon_xinlang"/>
+                    android:src="@mipmap/icon_home_wallet"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/string_wallet"
+                    android:text="@string/string_mining_cheats"
                     android:textColor="@color/white"
                     android:layout_marginLeft="@dimen/size_5dp"/>
             </LinearLayout>
@@ -86,7 +86,7 @@
                 <ImageView
                     android:layout_width="@dimen/size_25dp"
                     android:layout_height="@dimen/size_25dp"
-                    android:src="@mipmap/icon_xinlang"/>
+                    android:src="@mipmap/icon_home_invite_friend"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -100,8 +100,11 @@
             android:id="@+id/grid"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/size_20dp"
+            android:layout_marginTop="@dimen/size_50dp"
+            android:layout_marginLeft="@dimen/size_20dp"
+            android:layout_marginRight="@dimen/size_20dp"
             android:numColumns="3"
+            android:verticalSpacing="@dimen/size_5dp"
             android:scrollbars="none"></GridView>
     </LinearLayout>
     <LinearLayout

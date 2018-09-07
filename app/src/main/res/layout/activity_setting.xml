@@ -26,7 +26,7 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="@dimen/size_40dp"
             android:layout_height="@dimen/size_40dp"
-            android:src="@mipmap/ic_launcher"
+            android:src="@mipmap/icon_excmple"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/size_70dp"
             />
@@ -57,7 +57,7 @@
             android:id="@+id/tv_nickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="我的妈"
+            android:text=""
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/size_70dp"
             />
@@ -88,7 +88,7 @@
             android:id="@+id/tv_mobile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="123456789"
+            android:text=""
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/size_70dp"
             />

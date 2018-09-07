@@ -53,6 +53,7 @@
                 android:textSize="@dimen/text_20sp" />
 
             <TextView
+                android:id="@+id/tv_boardcast_content"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/size_20dp"
@@ -74,7 +75,8 @@
                 android:layout_marginTop="@dimen/size_15dp"
                 android:layout_weight="2"
                 android:scaleType="fitXY"
-                android:src="@mipmap/icon_publicity_01" />
+                android:src="@mipmap/icon_publicity_01"
+                android:visibility="gone"/>
 
 
             <ImageView
@@ -87,7 +89,20 @@
                 android:layout_marginTop="@dimen/size_15dp"
                 android:layout_weight="2"
                 android:scaleType="fitXY"
-                android:src="@mipmap/icon_publicity_02" />
+                android:src="@mipmap/icon_publicity_02"
+                android:visibility="gone"/>
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="@dimen/size_300dp"
+                android:layout_height="@dimen/size_150dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/size_30dp"
+                android:layout_marginRight="@dimen/size_30dp"
+                android:layout_marginTop="@dimen/size_15dp"
+                android:layout_weight="2"
+                android:scaleType="fitXY"
+                android:src="@mipmap/icon_publicity_02"
+                android:visibility="gone"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -95,32 +110,6 @@
                 android:layout_margin="@dimen/size_20dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/size_30dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="2"
-                        android:text="@string/project_broadcast_start_date_text"
-                        android:textColor="@color/publicity_text_color"
-                        android:textSize="@dimen/text_16sp" />
-
-                    <TextView
-                        android:id="@+id/id_project_broadcast_start_date"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="@dimen/size_40dp"
-                        android:layout_weight="1"
-                        android:text="2018-03-04"
-                        android:textColor="@color/publicity_text_color"
-                        android:textSize="@dimen/text_16sp" />
-
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -358,7 +347,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/size_20dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="wrap_content"

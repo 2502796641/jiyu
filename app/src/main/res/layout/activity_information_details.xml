@@ -30,12 +30,14 @@
 
 
             <RelativeLayout
+                android:id="@+id/rl_bottom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/size_10dp"
                 android:background="@color/white"
                 android:layout_below="@+id/webview"
-                android:layout_alignParentBottom="true">
+                android:layout_alignParentBottom="true"
+                android:visibility="gone">
 
                 <ImageView
                     android:id="@+id/iv_reading_quentity"

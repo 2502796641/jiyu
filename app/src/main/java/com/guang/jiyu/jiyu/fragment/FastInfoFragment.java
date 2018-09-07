@@ -23,6 +23,8 @@ import com.guang.jiyu.jiyu.model.FastInformationModel;
 import com.guang.jiyu.jiyu.model.InformationWithDateModel;
 import com.guang.jiyu.jiyu.net.OkHttpManage;
 import com.guang.jiyu.jiyu.utils.LinkParams;
+import com.guang.jiyu.jiyu.utils.LogUtils;
+import com.guang.jiyu.jiyu.utils.MyLinearLayoutManager;
 import com.guang.jiyu.jiyu.utils.MyTextUtils;
 import com.guang.jiyu.jiyu.utils.ToastUtils;
 import com.guang.jiyu.jiyu.widget.PullToRefreshLayout.BaseRefreshListener;
@@ -77,7 +79,7 @@ public class FastInfoFragment extends BaseFragment {
                         pullRefresh.finishLoadMore();
                         list = (List<FastInformationModel>) message.obj;
                         for(int i = 0;i <list.size();i++){
-                            Log.d("list--------","" + list.get(i).toString());
+                            LogUtils.d("list--------","" + list.get(i).toString());
                         }
                         informationAdapter = new FastInfoAdapter(list);
                         rv.setAdapter(informationAdapter);
@@ -115,6 +117,7 @@ public class FastInfoFragment extends BaseFragment {
                         });
                         break;
                     case Contants.INFO_REFRESH_NOMORE:
+                        pullRefresh.finishRefresh();
                         pullRefresh.finishLoadMore();
                         ToastUtils.showToast("没有更多数据了");
                         break;
@@ -152,17 +155,20 @@ public class FastInfoFragment extends BaseFragment {
             OkHttpManage.getClient(getContext()).newCall(request).enqueue(new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
-                    Log.d("onFailure-----", e.toString());
+                    LogUtils.d("onFailure-----", e.toString());
                     handler.sendEmptyMessage(Contants.INFO_GET_FAILURE);
                 }
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
                     String result = response.body().string();
+                    LogUtils.d("updateBadTimes",result);
                     try {
                         JSONObject object = new JSONObject(result);
                         if ("200".equals(object.getString("code"))) {
                             String bearishCount = list.get(position).bearish;
-                            bearishCount = String.valueOf(Integer.parseInt(bearishCount) + 1);
+                            if(!MyTextUtils.isEmpty(bearishCount)){
+                                bearishCount = String.valueOf(Integer.parseInt(bearishCount) + 1);
+                            }
                             list.get(position).bearish = bearishCount;
                             handler.sendEmptyMessage(Contants.INFO_BEARISH);
                         }
@@ -193,19 +199,21 @@ public class FastInfoFragment extends BaseFragment {
             OkHttpManage.getClient(getContext()).newCall(request).enqueue(new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
-                    Log.d("onFailure-----", e.toString());
+                    LogUtils.d("onFailure-----", e.toString());
                     handler.sendEmptyMessage(Contants.INFO_GET_FAILURE);
                 }
 
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
                     String result = response.body().string();
-                    Log.d("updategoodtime",result);
+                    LogUtils.d("updategoodtime",result);
                     try {
                         JSONObject object = new JSONObject(result);
                         if ("200".equals(object.getString("code"))) {
                             String bulishCount = list.get(position).bulish;
-                            bulishCount = String.valueOf(Integer.parseInt(bulishCount) + 1);
+                            if(!MyTextUtils.isEmpty(bulishCount)){
+                                bulishCount = String.valueOf(Integer.parseInt(bulishCount) + 1);
+                            }
                             list.get(position).bulish = bulishCount;
                             handler.sendEmptyMessage(Contants.INFO_BULISH);
                         }
@@ -234,8 +242,9 @@ public class FastInfoFragment extends BaseFragment {
         // TODO: inflate a fragment view
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
         unbinder = ButterKnife.bind(this, rootView);
-        rv.setLayoutManager(new LinearLayoutManager(getActivity()));
+        rv.setLayoutManager(new MyLinearLayoutManager(getActivity()));
         list = new ArrayList<>();
+        withDateList = new ArrayList<>();
         //initList();
         //initInfomation();
         return rootView;
@@ -243,7 +252,10 @@ public class FastInfoFragment extends BaseFragment {
 
 
 
-    private void initInfomation(int pageNum) {
+    private void initInfomation(int pageNum,String tag) {
+        if(TAG_REFRISH.equals(tag)){
+            list.clear();
+        }
         JSONObject object = new JSONObject();
         try {
             object.put("pageNumber", pageNum + "");
@@ -259,19 +271,19 @@ public class FastInfoFragment extends BaseFragment {
             OkHttpManage.getClient(getContext()).newCall(request).enqueue(new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
-                    Log.d("onFailure-----", e.toString());
+                    LogUtils.d("onFailure-----", e.toString());
                     handler.sendEmptyMessage(Contants.INFO_GET_FAILURE);
                 }
 
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
                     String result = response.body().string();
-                    Log.d("快讯-----", result);
+                    LogUtils.d("快讯-----", result);
                     try {
                         JSONObject object = new JSONObject(result);
                         //有数据
                         if ("200".equals(object.getString("code"))) {
-                            withDateList = new ArrayList<>();
+
                             JSONArray data = object.getJSONArray("data");
                             for(int i = 0;i < data.length();i++){
                                 JSONObject jb = new JSONObject(data.get(i).toString());
@@ -326,18 +338,21 @@ public class FastInfoFragment extends BaseFragment {
             }
         }
     }
-
+    private final String TAG_REFRISH = "refresh";
+    private final String TAG_LOADMORE = "loadmore";
     private void setRefreshListen() {
         pullRefresh.autoRefresh();
         pullRefresh.setRefreshListener(new BaseRefreshListener() {
             @Override
             public void refresh() {
-                initInfomation(pageNum);
+                pageNum = 1;
+                initInfomation(pageNum,TAG_REFRISH);
             }
 
             @Override
             public void loadMore() {
-                initInfomation(pageNum++);
+                pageNum = pageNum + 1;
+                initInfomation(pageNum,TAG_LOADMORE);
             }
         });
     }

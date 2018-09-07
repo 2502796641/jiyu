@@ -37,7 +37,7 @@ public class PingNet {
             }
             successReader = new BufferedReader(new InputStreamReader(process.getInputStream()));
             while ((line = successReader.readLine()) != null) {
-                Log.i(TAG, line);
+                LogUtils.i(TAG, line);
                 append(pingNetEntity.getResultBuffer(), line);
                 String time;
                 if ((time = getTime(line)) != null) {
@@ -46,7 +46,7 @@ public class PingNet {
             }
             int status = process.waitFor();
             if (status == 0) {
-                Log.i(TAG, "exec cmd success:" + command);
+                LogUtils.i(TAG, "exec cmd success:" + command);
                 append(pingNetEntity.getResultBuffer(), "exec cmd success:" + command);
                 pingNetEntity.setResult(true);
             } else {
@@ -55,14 +55,14 @@ public class PingNet {
                 pingNetEntity.setPingTime(null);
                 pingNetEntity.setResult(false);
             }
-            Log.i(TAG, "exec finished.");
+            LogUtils.i(TAG, "exec finished.");
             append(pingNetEntity.getResultBuffer(), "exec finished.");
         } catch (IOException e) {
             Log.e(TAG, String.valueOf(e));
         } catch (InterruptedException e) {
             Log.e(TAG, String.valueOf(e));
         } finally {
-            Log.i(TAG, "ping exit.");
+            LogUtils.i(TAG, "ping exit.");
             if (process != null) {
                 process.destroy();
             }
@@ -74,7 +74,7 @@ public class PingNet {
                 }
             }
         }
-        Log.i(TAG, pingNetEntity.getResultBuffer().toString());
+        LogUtils.i(TAG, pingNetEntity.getResultBuffer().toString());
         return pingNetEntity;
     }
 
@@ -92,7 +92,7 @@ public class PingNet {
                 continue;
             int index = l.indexOf("time=");
             time = l.substring(index + "time=".length());
-            Log.i(TAG, time);
+            LogUtils.i(TAG, time);
         }
         return time;
     }

@@ -9,6 +9,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.guang.jiyu.R;
+import com.guang.jiyu.jiyu.model.CurrencyModel;
 import com.guang.jiyu.jiyu.model.ProretryTypeModel;
 
 import java.util.List;
@@ -18,11 +19,11 @@ import java.util.List;
  */
 
 public class ProretryTypeAdapter extends BaseAdapter{
-    private List<ProretryTypeModel> list;
+    private List<CurrencyModel> list;
     private Context context;
     private LayoutInflater inflater;
 
-    public ProretryTypeAdapter(Context context,List<ProretryTypeModel> list) {
+    public ProretryTypeAdapter(Context context,List<CurrencyModel> list) {
         this.context = context;
         inflater = LayoutInflater.from(context);
         this.list = list;
@@ -57,13 +58,13 @@ public class ProretryTypeAdapter extends BaseAdapter{
             holder = (Holder) view.getTag();
         }
 
-        holder.tv_count.setText(list.get(i).getCount());
-        holder.tv_type.setText(list.get(i).getType());
+        holder.tv_count.setText(list.get(i).getAmount());
+        holder.tv_type.setText(list.get(i).getCurrency());
         return view;
     }
 
     //添加数据
-    public void addItem(ProretryTypeModel model){
+    public void addItem(CurrencyModel model){
         list.add(model);
     }
 

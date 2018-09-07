@@ -13,6 +13,7 @@ import com.guang.jiyu.base.BaseActivity;
 import com.guang.jiyu.base.Contants;
 import com.guang.jiyu.jiyu.utils.ActivityUtils;
 import com.guang.jiyu.jiyu.utils.TitleBarUtils;
+import com.guang.jiyu.jiyu.utils.ToastUtils;
 import com.guang.jiyu.jiyu.utils.UserInfoUtils;
 import com.guang.jiyu.jiyu.widget.TitleBar;
 
@@ -49,22 +50,55 @@ public class SettingActivity extends BaseActivity {
     public void click(View view){
         switch (view.getId()){
             case R.id.rl_nickname:
-                ActivityUtils.startActivity(this,ChangeNicknameActivity.class);
+                if(UserInfoUtils.isUserLogin(this)){
+                    ActivityUtils.startActivity(this,ChangeNicknameActivity.class);
+                }else{
+                    ToastUtils.showToast("请先登录");
+                    ActivityUtils.startActivity(this,LoginActivity.class);
+                }
                 break;
                 case R.id.rl_mobile:
-                ActivityUtils.startActivity(this,BindNewMobileActivity.class);
+                    if(UserInfoUtils.isUserLogin(this)){
+                        ActivityUtils.startActivity(this,BindNewMobileActivity.class);
+                    }else{
+                        ToastUtils.showToast("请先登录");
+                        ActivityUtils.startActivity(this,LoginActivity.class);
+                    }
+
                 break;
                 case R.id.rl_change_pwd:
-                ActivityUtils.startActivity(this,ChangePwdActivity.class);
+                    if(UserInfoUtils.isUserLogin(this)){
+                        ActivityUtils.startActivity(this,ChangePwdActivity.class);
+                    }else{
+                        ToastUtils.showToast("请先登录");
+                        ActivityUtils.startActivity(this,LoginActivity.class);
+                    }
+
                 break;
                 case R.id.rl_id_identification:
-                ActivityUtils.startActivity(this,IdentityAuthenticateActivity.class);
+                    if(UserInfoUtils.isUserLogin(this)){
+                        ActivityUtils.startActivity(this,IdentityAuthenticateActivity.class);
+                    }else{
+                        ToastUtils.showToast("请先登录");
+                        ActivityUtils.startActivity(this,LoginActivity.class);
+                    }
+
                 break;
                 case R.id.rl_mark_invite_code:
-                ActivityUtils.startActivity(this,InvitationCodeActivity.class);
+                    if(UserInfoUtils.isUserLogin(this)){
+                        ActivityUtils.startActivity(this,InvitationCodeActivity.class);
+                    }else{
+                        ToastUtils.showToast("请先登录");
+                        ActivityUtils.startActivity(this,LoginActivity.class);
+                    }
+
                 break;
                 case R.id.btn_exit_account:
+                    tvMobile.setText("");
+                    tvNickname.setText("");
                 UserInfoUtils.saveInt(this,Contants.USER_ID,0);
+                UserInfoUtils.saveString(this,Contants.MOBILE_NO,"");
+                UserInfoUtils.saveString(this,Contants.USER_NAME,"");
                 finish();
                 break;
         }

@@ -21,6 +21,7 @@ import com.guang.jiyu.jiyu.model.ProjectDetailModel;
 import com.guang.jiyu.jiyu.net.OkHttpManage;
 import com.guang.jiyu.jiyu.utils.ActivityUtils;
 import com.guang.jiyu.jiyu.utils.LinkParams;
+import com.guang.jiyu.jiyu.utils.LogUtils;
 import com.guang.jiyu.jiyu.utils.ToastUtils;
 import com.guang.jiyu.jiyu.utils.UserInfoUtils;
 import com.guang.jiyu.jiyu.widget.GetCandySuccessPopupwindow;
@@ -112,13 +113,13 @@ public class ProjectGetCandyActivity extends BaseActivity {
             OkHttpManage.getClient(this).newCall(request).enqueue(new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
-                    Log.d("onFailure-----", e.toString());
+                    LogUtils.d("onFailure-----", e.toString());
                 }
 
                 @Override
                 public void onResponse(Call call, Response response) throws IOException {
                     String result = response.body().string();
-                    Log.d("result-----", result);
+                    LogUtils.d("result-----", result);
                     try {
                         JSONObject object = new JSONObject(result);
                         if ("200".equals(object.getString("code"))) {

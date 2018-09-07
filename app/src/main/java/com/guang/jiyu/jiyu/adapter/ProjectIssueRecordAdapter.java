@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.guang.jiyu.R;
 import com.guang.jiyu.jiyu.model.ProjectIssueRecordModel;
 import com.guang.jiyu.jiyu.model.PropetryRecordModel;
+import com.guang.jiyu.jiyu.model.ProretryTypeModel;
 
 import java.util.List;
 
@@ -19,11 +20,11 @@ import java.util.List;
 
 public class ProjectIssueRecordAdapter extends BaseAdapter{
 
-    private List<ProjectIssueRecordModel> list;
+    private List<ProretryTypeModel> list;
     private Context context;
     private LayoutInflater inflater;
 
-    public ProjectIssueRecordAdapter(Context context,List<ProjectIssueRecordModel> list) {
+    public ProjectIssueRecordAdapter(Context context,List<ProretryTypeModel> list) {
         this.context = context;
         inflater = LayoutInflater.from(context);
         this.list = list;
@@ -57,14 +58,18 @@ public class ProjectIssueRecordAdapter extends BaseAdapter{
             holder = (Holder) view.getTag();
         }
 
-        holder.tv_count.setText(list.get(i).getIssue_count());
-        holder.tv_updateTime.setText(list.get(i).getUpdate_time());
+        holder.tv_count.setText("发布量:" + list.get(i).getSendTheTotal());
+        holder.tv_updateTime.setText(list.get(i).getBroadcastStartTime());
 
         return view;
     }
 
+    public void setList(List<ProretryTypeModel> list) {
+        this.list = list;
+    }
+
     //添加数据
-    public void addItem(ProjectIssueRecordModel model){
+    public void addItem(ProretryTypeModel model){
         list.add(model);
     }
 

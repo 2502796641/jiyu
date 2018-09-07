@@ -8,8 +8,10 @@ import android.widget.TextView;
 import com.allen.library.SuperButton;
 import com.guang.jiyu.R;
 import com.guang.jiyu.base.BaseActivity;
+import com.guang.jiyu.jiyu.model.CurrencyModel;
 import com.guang.jiyu.jiyu.utils.ActivityUtils;
 import com.guang.jiyu.jiyu.utils.TitleBarUtils;
+import com.guang.jiyu.jiyu.utils.UserInfoUtils;
 import com.guang.jiyu.jiyu.widget.TitleBar;
 
 import butterknife.BindView;
@@ -30,12 +32,19 @@ public class ProretryTypeDetailsActivity extends BaseActivity {
     TextView idDrawMoneyMarketValue;
     @BindView(R.id.btn_login)
     SuperButton btnLogin;
+    private CurrencyModel model;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setView(R.layout.activity_propetry_type_details);
         initTitle();
+        model = (CurrencyModel) getIntent().getSerializableExtra("model");
+        idDrawMoneyName.setText(model.getCurrency());
+        idDrawMoneyBalance.setText(model.getMoney());
+        String curr_value = UserInfoUtils.getString(this,model.getCurrency());
+        idDrawMoneyMarketValue.setText((Double.parseDouble(curr_value) * Double.parseDouble(model.getMoney())) + "");
     }
 
     private void initTitle() {
@@ -49,7 +58,7 @@ public class ProretryTypeDetailsActivity extends BaseActivity {
         titlebar.addAction(new TitleBar.TextAction("钱包记录") {
             @Override
             public void performAction(View view) {
-                ActivityUtils.startActivity(ProretryTypeDetailsActivity.this,MyPropetryRecordActivity.class);
+                //ActivityUtils.startActivity(ProretryTypeDetailsActivity.this,MyPropetryRecordActivity.class);
             }
         });
     }

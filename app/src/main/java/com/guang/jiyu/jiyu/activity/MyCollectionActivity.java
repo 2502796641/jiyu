@@ -23,6 +23,7 @@ import com.guang.jiyu.jiyu.model.InformationModel;
 import com.guang.jiyu.jiyu.net.OkHttpManage;
 import com.guang.jiyu.jiyu.utils.ActivityUtils;
 import com.guang.jiyu.jiyu.utils.LinkParams;
+import com.guang.jiyu.jiyu.utils.LogUtils;
 import com.guang.jiyu.jiyu.utils.TitleBarUtils;
 import com.guang.jiyu.jiyu.utils.ToastUtils;
 import com.guang.jiyu.jiyu.utils.UserInfoUtils;
@@ -81,6 +82,11 @@ public class MyCollectionActivity extends BaseActivity {
                     case Contants.INFOCollect_NOData:
                         rlNoInformation.setVisibility(View.VISIBLE);
                         refreshLayout.setVisibility(View.GONE);
+                        break;
+                    case Contants.INFOCollect_Failure:
+                        rlNoInformation.setVisibility(View.VISIBLE);
+                        refreshLayout.setVisibility(View.GONE);
+                        ToastUtils.showToast((String) message.obj);
                         break;
                     case Contants.INFOCollect_HaveData:
                         ToastUtils.showToast("刷新成功");
@@ -171,13 +177,13 @@ public class MyCollectionActivity extends BaseActivity {
         OkHttpManage.getClient(this).newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                Log.d("cancelCollectionfail", e.toString());
+                LogUtils.d("cancelCollectionfail", e.toString());
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String result = response.body().string();
-                Log.d("cancelCollectionsuccess", result);
+                LogUtils.d("cancelCollectionsuccess", result);
             }
         });
     }
@@ -201,13 +207,13 @@ public class MyCollectionActivity extends BaseActivity {
         OkHttpManage.getClient(this).newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                Log.d("register-----", e.toString());
+                LogUtils.d("register-----", e.toString());
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String result = response.body().string();
-                Log.d("result-----", result);
+                LogUtils.d("result-----", result);
                 try {
                     JSONObject object = new JSONObject(result);
                     if ("200".equals(object.getString("code"))) {
@@ -234,7 +240,15 @@ public class MyCollectionActivity extends BaseActivity {
                             m.what = Contants.INFOCollect_HaveData;
                             m.obj = list;
                             handler.sendMessage(m);
+
                         }
+                    }
+
+                    if("500".equals(object.getString("code"))){
+                        m = new Message();
+                        m.what = Contants.INFOCollect_Failure;
+                        m.obj = object.getString("message");
+                        handler.sendMessage(m);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

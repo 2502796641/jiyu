@@ -13,6 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.guang.jiyu.R;
+
 import java.util.LinkedList;
 
 /**
@@ -83,6 +85,7 @@ public class TitleBar extends ViewGroup implements View.OnClickListener {
         mLeftText.setPadding(mOutPadding + mActionPadding, 0, mOutPadding, 0);
 
         mCenterText = new TextView(context);
+        mCenterText.setTextColor(context.getResources().getColor(R.color.colorBlack));
         mSubTitleText = new TextView(context);
         mCenterLayout.addView(mCenterText);
         mCenterLayout.addView(mSubTitleText);

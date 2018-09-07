@@ -18,7 +18,7 @@
             android:id="@+id/iv_user_icon"
             android:layout_width="@dimen/size_70dp"
             android:layout_height="@dimen/size_70dp"
-            android:src="@mipmap/icon_user_icon_default"
+            android:src="@mipmap/icon_excmple"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/size_20dp"/>
 

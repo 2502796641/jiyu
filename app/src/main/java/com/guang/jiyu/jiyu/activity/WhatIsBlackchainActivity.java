@@ -28,14 +28,12 @@ public class WhatIsBlackchainActivity extends BaseActivity {
     }
 
     private void initTitle() {
-        TitleBarUtils.setTitleBarWithImg(this, titlebar, "新手入门", R.mipmap.icon_return_with_txt);
+        TitleBarUtils.setTitleBarWithImg(this, titlebar, "挖矿秘籍", R.mipmap.icon_return_with_txt);
         titlebar.setLeftClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-
-
     }
 }

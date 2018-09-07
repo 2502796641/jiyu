@@ -6,35 +6,54 @@
         android:id="@+id/titlebar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-
-    <RelativeLayout
+    <View
+        style="@style/hor_view_1dp"/>
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size_40dp"
-        android:layout_marginTop="@dimen/size_15dp">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="什么是JYCJ"
+                android:textColor="@color/colorBlack"
+                android:textSize="@dimen/text_16sp"
+                android:layout_margin="@dimen/size_10dp"
+                android:layout_centerInParent="true"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/size_15dp"
+                android:textSize="@dimen/text_14sp"
+                android:textColor="@color/colorBlack"
+                android:lineSpacingExtra="@dimen/size_5dp"
+                android:text="MBTC是依托于区块链技术，基于个人在梅里城活动产生的奖励，可以用于梅里城的消费、兑换以及在共识机制下的交易。梅里城居民除了完成基础任务获得算力值挖掘美链宝数字资产之外，还可以购买专业矿机来增加算力值获取更多的MBTC。同时对梅里城活跃度不高（连续48小时不登录梅里城）实行算力值锁定，停止MBTC的挖掘，等待下一次登录激活算力值。MBTC总量有限、全球累计发行50亿枚，跟据算力值自动分配每日产生有限的MBTC，且每两年出产量减少一半，随着时间推移，获取难度越来越大，前期参与更有优势"/>
 
-            android:text="@string/string_whatis_blackchain"
-            android:textColor="@color/colorBlack"
-            android:textSize="@dimen/text_16sp"
-            android:layout_centerInParent="true"/>
-    </RelativeLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="什么是MBLC"
+                android:textColor="@color/colorBlack"
+                android:layout_margin="@dimen/size_10dp"
+                android:textSize="@dimen/text_16sp"
+                android:layout_centerInParent="true"/>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/size_15dp"
-        android:textSize="@dimen/text_14sp"
-        android:textColor="@color/colorBlack"
-        android:lineSpacingExtra="@dimen/size_5dp"
-        android:text="@string/string_MBTC_contents"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/size_15dp"
-        android:textSize="@dimen/text_14sp"
-        android:textColor="@color/colorBlack"
-        android:lineSpacingExtra="@dimen/size_5dp"
-        android:text="@string/string_MBTC_contents"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/size_15dp"
+                android:textSize="@dimen/text_14sp"
+                android:textColor="@color/colorBlack"
+                android:lineSpacingExtra="@dimen/size_5dp"
+                android:text="MBTC是依托于区块链技术，基于个人在梅里城活动产生的奖励，可以用于梅里城的消费、兑换以及在共识机制下的交易。梅里城居民除了完成基础任务获得算力值挖掘美链宝数字资产之外，还可以购买专业矿机来增加算力值获取更多的MBTC。同时对梅里城活跃度不高（连续48小时不登录梅里城）实行算力值锁定，停止MBTC的挖掘，等待下一次登录激活算力值。MBTC总量有限、全球累计发行50亿枚，跟据算力值自动分配每日产生有限的MBTC，且每两年出产量减少一半，随着时间推移，获取难度越来越大，前期参与更有优势。"/>
+        </LinearLayout>
+
+
+
+    </ScrollView>
+
 </LinearLayout>

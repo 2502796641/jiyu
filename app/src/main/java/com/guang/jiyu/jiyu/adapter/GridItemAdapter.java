@@ -28,6 +28,9 @@ public class GridItemAdapter extends BaseAdapter {
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
+    private int[] check_icon = new int[]{R.mipmap.b3_01, R.mipmap.b3_02, R.mipmap.b3_03, R.mipmap.b3_04,
+            R.mipmap.b3_05, R.mipmap.b3_06, R.mipmap.b3_07, R.mipmap.b3_08};
+
     public int getCount() {
         return list.size();
     }
@@ -53,17 +56,22 @@ public class GridItemAdapter extends BaseAdapter {
         }else{
             viewHolder = (ViewHolder) convertView.getTag();
         }
-
         //设置holder
-        ProretryTypeModel model =  list.get(position);
-        viewHolder.iv_icon.setImageResource(R.mipmap.icon_fish3);
-        viewHolder.tv_count.setText(model.getCount());
-        viewHolder.tv_type.setText(model.getType());
+        if(list.size() != 0){
+            ProretryTypeModel model =  list.get(position);
+            viewHolder.iv_icon.setImageResource(check_icon[Integer.parseInt(model.getIcon())]);
+            viewHolder.tv_count.setText(model.getAverage());
+            viewHolder.tv_type.setText(model.getCurrency());
+        }
+
         return convertView;
     }
 
+    public void setList(List<ProretryTypeModel> list) {
+        this.list = list;
+    }
 
-    private class ViewHolder{
+    static class ViewHolder{
         ImageView iv_icon;
         TextView tv_count;
         TextView tv_type;

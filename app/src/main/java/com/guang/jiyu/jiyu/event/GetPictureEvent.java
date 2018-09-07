@@ -5,6 +5,8 @@ import android.widget.ImageView;
 
 import com.guang.jiyu.base.BaseEvent;
 
+import java.util.List;
+
 /**
  * Created by admin on 2018/8/24.
  */
@@ -13,9 +15,14 @@ public class GetPictureEvent extends BaseEvent{
     private Uri uri;
     private String tag;
     private ImageView iv;
+    private List<Uri> photos;
 
     public GetPictureEvent(Uri uri) {
         this.uri = uri;
+    }
+
+    public GetPictureEvent(List<Uri> photos) {
+        this.photos = photos;
     }
 
     public GetPictureEvent(String tag) {
@@ -41,5 +48,21 @@ public class GetPictureEvent extends BaseEvent{
 
     public void setIv(ImageView iv) {
         this.iv = iv;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    public List<Uri> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(List<Uri> photos) {
+        this.photos = photos;
     }
 }

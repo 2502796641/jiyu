@@ -26,6 +26,7 @@ import com.guang.jiyu.jiyu.model.InformationModel;
 import com.guang.jiyu.jiyu.net.OkHttpManage;
 import com.guang.jiyu.jiyu.utils.ActivityUtils;
 import com.guang.jiyu.jiyu.utils.LinkParams;
+import com.guang.jiyu.jiyu.utils.LogUtils;
 import com.guang.jiyu.jiyu.utils.ToastUtils;
 import com.guang.jiyu.jiyu.utils.UserInfoUtils;
 import com.zhy.view.flowlayout.FlowLayout;
@@ -164,7 +165,7 @@ public class InformationSearchActivity extends BaseActivity {
             OkHttpManage.getClient(this).newCall(request).enqueue(new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
-                    Log.d("onFailure-----", e.toString());
+                    LogUtils.d("onFailure-----", e.toString());
                     handler.sendEmptyMessage(Contants.INFOSearch_GET_FAILURE);
                 }
 

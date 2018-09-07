@@ -14,6 +14,7 @@ import com.guang.jiyu.base.BaseActivity;
 import com.guang.jiyu.base.Contants;
 import com.guang.jiyu.jiyu.net.OkHttpManage;
 import com.guang.jiyu.jiyu.utils.LinkParams;
+import com.guang.jiyu.jiyu.utils.LogUtils;
 import com.guang.jiyu.jiyu.utils.TitleBarUtils;
 import com.guang.jiyu.jiyu.utils.ToastUtils;
 import com.guang.jiyu.jiyu.utils.UserInfoUtils;
@@ -73,7 +74,7 @@ public class ChangeNicknameActivity extends BaseActivity {
     }
 
     private void changeNickName() {
-        Log.d("USER_ID-----","" + UserInfoUtils.getInt(this, Contants.USER_ID));
+        LogUtils.d("USER_ID-----","" + UserInfoUtils.getInt(this, Contants.USER_ID));
         MultipartBody.Builder mbody=new MultipartBody.Builder().setType(MultipartBody.FORM);
         mbody.addFormDataPart("userId", UserInfoUtils.getInt(this, Contants.USER_ID)+"");
         mbody.addFormDataPart("userName", nickname);
@@ -87,12 +88,12 @@ public class ChangeNicknameActivity extends BaseActivity {
         OkHttpManage.getClient(this).newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                Log.d("register-----",e.toString());
+                LogUtils.d("register-----",e.toString());
             }
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String result = response.body().string();
-                Log.d("result-----",result);
+                LogUtils.d("result-----",result);
                 try {
                     JSONObject object = new JSONObject(result);
                     if("200".equals(object.getString("code"))){

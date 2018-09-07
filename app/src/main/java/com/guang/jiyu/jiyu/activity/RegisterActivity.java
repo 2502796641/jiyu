@@ -1,6 +1,8 @@
 package com.guang.jiyu.jiyu.activity;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
@@ -13,16 +15,19 @@ import com.google.gson.JsonObject;
 import com.guang.jiyu.R;
 import com.guang.jiyu.base.BaseActivity;
 import com.guang.jiyu.base.Contants;
+import com.guang.jiyu.jiyu.event.RegisterSuccessEvent;
 import com.guang.jiyu.jiyu.model.PingNetModel;
 import com.guang.jiyu.jiyu.net.BaseCallBack;
 import com.guang.jiyu.jiyu.net.BaseOkHttpClient;
 import com.guang.jiyu.jiyu.net.OkHttpManage;
 import com.guang.jiyu.jiyu.utils.LinkParams;
+import com.guang.jiyu.jiyu.utils.LogUtils;
 import com.guang.jiyu.jiyu.utils.MyTextUtils;
 import com.guang.jiyu.jiyu.utils.PingNet;
 import com.guang.jiyu.jiyu.utils.ToastUtils;
 import com.guang.jiyu.jiyu.utils.UserInfoUtils;
 
+import org.greenrobot.eventbus.EventBus;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -62,7 +67,17 @@ public class RegisterActivity extends BaseActivity {
     private String mobileNo;
     private String verifyCode;
     private String pwd,pwd_again;
+    private Handler handler = new Handler(new Handler.Callback() {
+        @Override
+        public boolean handleMessage(Message message) {
+            if(message != null){
+                switch (message.what){
 
+                }
+            }
+            return false;
+        }
+    });
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -114,7 +129,7 @@ public class RegisterActivity extends BaseActivity {
      * @param pwd
      */
     private void doRegister(final String mobileNo, String verifyCode, final String pwd) {
-        Log.d("doRegister-----",mobileNo +"--" + verifyCode + "--" + pwd);
+        LogUtils.d("doRegister-----",mobileNo +"--" + verifyCode + "--" + pwd);
         MultipartBody.Builder mbody=new MultipartBody.Builder().setType(MultipartBody.FORM);
         mbody.addFormDataPart("mobileNo", mobileNo);
         mbody.addFormDataPart("loginPwd", MyTextUtils.md5Password(pwd));
@@ -129,20 +144,25 @@ public class RegisterActivity extends BaseActivity {
         OkHttpManage.getClient(this).newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                Log.d("register-----",e.toString());
+                LogUtils.d("register-----",e.toString());
                 Toast.makeText(RegisterActivity.this, "失败：" + e.toString(), Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String result = response.body().string();
-                Log.d("result-----",result);
+                LogUtils.d("result-----",result);
                 try {
                     JSONObject object = new JSONObject(result);
                     if("200".equals(object.getString("code"))){
                         UserInfoUtils.saveString(RegisterActivity.this, Contants.USER_NAME,mobileNo);
                         UserInfoUtils.saveString(RegisterActivity.this,Contants.USER_PWD,pwd);
+                        EventBus.getDefault().post(new RegisterSuccessEvent(mobileNo,pwd));
+                        ToastUtils.showToastInActivity(RegisterActivity.this,"注册成功！");
                         finish();
+                    }
+                    if("500".equals(object.getString("code"))){
+                        ToastUtils.showToastInActivity(RegisterActivity.this,object.getString("message"));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -168,17 +188,20 @@ public class RegisterActivity extends BaseActivity {
         OkHttpManage.getClient(this).newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                Log.d("register-----",e.toString());
+                LogUtils.d("register-----",e.toString());
             }
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String result = response.body().string();
-                Log.d("result-----",result);
+                LogUtils.d("result-----",result);
                 try {
                     JSONObject object = new JSONObject(result);
                     if("200".equals(object.getString("code"))){
-
                         ToastUtils.showToastInActivity(RegisterActivity.this,"验证码已发送");
+                    }
+
+                    if("500".equals(object.getString("code"))){
+                        ToastUtils.showToastInActivity(RegisterActivity.this,object.getString("message"));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -193,9 +216,9 @@ public class RegisterActivity extends BaseActivity {
             public void run() {
                 PingNetModel pingNetEntity=new PingNetModel("192.168.2.73:8080",3,5,new StringBuffer());
                 pingNetEntity= PingNet.ping(pingNetEntity);
-                Log.i("testPing",pingNetEntity.getIp());
-                Log.i("testPing","time="+pingNetEntity.getPingTime());
-                Log.i("testPing",pingNetEntity.isResult()+"");
+                LogUtils.i("testPing",pingNetEntity.getIp());
+                LogUtils.i("testPing","time="+pingNetEntity.getPingTime());
+                LogUtils.i("testPing",pingNetEntity.isResult()+"");
             }
         }).start();
     }

@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.guang.jiyu.R;
 import com.guang.jiyu.jiyu.model.InformationModel;
+import com.guang.jiyu.jiyu.utils.LogUtils;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -48,7 +49,7 @@ public class InfoAdapter extends BaseAdapter{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Holder holder = null;
-        Log.d("fastinfor-----",list.get(position).toString());
+        LogUtils.d("fastinfor-----",list.get(position).toString());
         if(convertView == null){
             holder = new Holder();
             convertView = inflater.inflate(R.layout.item_fast_information,null);

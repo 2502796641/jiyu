@@ -2,6 +2,8 @@ package com.guang.jiyu.jiyu.net;
 
 import android.util.Log;
 
+import com.guang.jiyu.jiyu.utils.LogUtils;
+
 import java.io.IOException;
 
 import okhttp3.MediaType;
@@ -58,7 +60,7 @@ public class ProgressResponsBody extends ResponseBody {
                 long len = super.read(sink, byteCount);
                 sum += (len == -1 ? 0 : len);
                 int press = (int) ((sum * 1.0f / totalSize) * 100);
-                Log.i("///////////", String.valueOf(totalSize));
+                LogUtils.i("///////////", String.valueOf(totalSize));
                 if (len == -1) {
                     listener.onDone(totalSize);
                 } else {

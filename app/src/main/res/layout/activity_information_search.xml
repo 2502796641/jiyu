@@ -18,6 +18,7 @@
             android:layout_weight="6"
             android:padding="@dimen/size_5dp"
             android:cursorVisible="false"
+            android:singleLine="true"
             android:paddingLeft="@dimen/size_5dp"
             android:textSize="@dimen/text_16sp"
             android:hint="@string/string_input_antistop"

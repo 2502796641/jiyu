@@ -1,11 +1,18 @@
 package com.guang.jiyu.jiyu.activity;
 
+import android.Manifest;
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Message;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -42,24 +49,42 @@ import com.guang.jiyu.jiyu.fragment.ProjectFragment;
 import com.guang.jiyu.jiyu.fragment.UserFragment;
 import com.guang.jiyu.jiyu.model.AirCandyModel;
 import com.guang.jiyu.jiyu.model.FastInformationModel;
+import com.guang.jiyu.jiyu.model.HashrateRecordModel;
+import com.guang.jiyu.jiyu.net.OkHttpManage;
+import com.guang.jiyu.jiyu.utils.ActivityUtils;
+import com.guang.jiyu.jiyu.utils.LinkParams;
+import com.guang.jiyu.jiyu.utils.LogUtils;
+import com.guang.jiyu.jiyu.utils.PermissionUtil;
 import com.guang.jiyu.jiyu.utils.ToastUtils;
+import com.guang.jiyu.jiyu.utils.UserInfoUtils;
 import com.guang.jiyu.jiyu.widget.GetCandySuccessPopupwindow;
 import com.guang.jiyu.jiyu.widget.SharePopupWindow;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import butterknife.BindView;
 import me.iwf.photopicker.PhotoPicker;
 import me.iwf.photopicker.PhotoPreview;
 import me.iwf.photopicker.utils.AndroidLifecycleUtils;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.MultipartBody;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 import q.rorbin.badgeview.QBadgeView;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements ActivityCompat.OnRequestPermissionsResultCallback{
 
     @BindView(R.id.vp_content)
     ViewPager vpContent;
@@ -84,17 +109,70 @@ public class MainActivity extends BaseActivity {
     private HomeFragment homeFragment;
     private InformationFragment informationFragment;
     private MarketFragmant marketFragmant;
-    private ProjectFragment projectFragment;
     private NewProjectFragment newProjectFragment;
     private UserFragment userFragment;
     boolean canLoadImage;
+    private static final String NEWPROJECT_FRAGMENT_KEY = "NewProjectFragment";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setView(R.layout.activity_main);
         initFragment();
-        initListener();
+        if(PermissionUtil.checkPermission(this,PackageManager.PERMISSION_GRANTED,Manifest.permission.READ_PHONE_STATE)){
+            getUserAuth();
+        }
+
+
+
+        //initListener();
+    }
+
+    @SuppressLint("MissingPermission")
+    private void getUserAuth() {
+/*        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+//            toast("需要动态获取权限");
+            ActivityCompat.requestPermissions(SplashActivity.this, new String[]{Manifest.permission.READ_PHONE_STATE}, REQUEST_PHONE_STATE);
+        }*/
+        final TelephonyManager tm = (TelephonyManager) getBaseContext().getSystemService(Context.TELEPHONY_SERVICE);
+        final String tmDevice, tmSerial, tmPhone, androidId;
+        tmDevice = "" + tm.getDeviceId();
+        tmSerial = "" + tm.getSimSerialNumber();
+        androidId = "" + android.provider.Settings.Secure.getString(getContentResolver(), android.provider.Settings.Secure.ANDROID_ID);
+        UUID deviceUuid = new UUID(androidId.hashCode(), ((long)tmDevice.hashCode() << 32) | tmSerial.hashCode());
+        String uniqueId = deviceUuid.toString();
+        UserInfoUtils.saveString(this,Contants.USER_UUID,uniqueId);
+        LogUtils.d("uniqueId-----", UserInfoUtils.getInt(this, Contants.USER_ID)  + "----------" + uniqueId);
+        final MultipartBody.Builder mbody = new MultipartBody.Builder().setType(MultipartBody.FORM);
+        mbody.addFormDataPart("userId", UserInfoUtils.getInt(this, Contants.USER_ID) + "");
+        mbody.addFormDataPart("uuid", uniqueId);
+        RequestBody requestBody = mbody.build();
+        final Request request = new Request.Builder()
+                .url(LinkParams.REQUEST_URL + "/user/getAuth")
+                .addHeader(Contants.AUTHORIZATION, UserInfoUtils.getString(this, Contants.AUTHORIZATION))
+                .post(requestBody)
+                .build();
+
+        OkHttpManage.getClient(this).newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                LogUtils.d("register-----", e.toString());
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String result = response.body().string();
+                LogUtils.d("/user/getAuth-----", result);
+                try {
+                    JSONObject object = new JSONObject(result);
+                    if("请登录".equals(object.getString("message"))){
+                        ActivityUtils.startActivity(MainActivity.this,LoginActivity.class);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     @Override
@@ -106,16 +184,19 @@ public class MainActivity extends BaseActivity {
      * 初始化底部导航栏监听事件
      */
     private void initListener() {
-        new QBadgeView(this).bindTarget(bblHome).setBadgeNumber(5);
+        //new QBadgeView(this).bindTarget(bblHome).setBadgeNumber(5);
         bbl.setOnItemSelectedListener(new BottomBarLayout.OnItemSelectedListener() {
             @Override
             public void onItemSelected(final BottomBarItem bottomBarItem, int previousPosition, final int currentPosition) {
-                Log.i("currentPosition","-------" + currentPosition);
-                if(currentPosition == 1){
+                LogUtils.i("currentPosition", "-------" + currentPosition);
+                if(currentPosition == 0){
+                    EventBus.getDefault().post(new MessageEvent(Contants.EVENT_REFRESH_FRAGMENT_DATA));
+                }
+                if (currentPosition == 1) {
                     EventBus.getDefault().post(new NewsFlashRefreshEvent(2));
                 }
 
-                if(currentPosition == 2){
+                if (currentPosition == 2) {
                     //showCenterPopupWindow( );
                     //initGetCandyPopWindow(null);
                 }
@@ -155,7 +236,7 @@ public class MainActivity extends BaseActivity {
         sharePopupWindow.setOnItemClickListener(new SharePopupWindow.OnItemClickListener() {
             @Override
             public void setOnItemClick(View v) {
-                switch (v.getId()){
+                switch (v.getId()) {
                     case R.id.rl_weibo:
                         ToastUtils.showToast("微博");
                         break;
@@ -184,9 +265,9 @@ public class MainActivity extends BaseActivity {
 
     @Subscribe
     public void onEventMainThread(BaseEvent baseEvent) {
-        if(baseEvent instanceof MessageEvent){
+        if (baseEvent instanceof MessageEvent) {
             MessageEvent messageEvent = (MessageEvent) baseEvent;
-            switch (messageEvent.getMessage()){
+            switch (messageEvent.getMessage()) {
                 case Contants.EVENT_INFORMATION:
                     bbl.setCurrentItem(1);
                     break;
@@ -196,20 +277,24 @@ public class MainActivity extends BaseActivity {
                 case Contants.EVENT_RECOVER_BLIGHTNESS:
                     setWindowAttr(1f);
                     break;
+                case Contants.EVENT_REFRESH_FRAGMENT:
+                    initFragment();
+                    bbl.setCurrentItem(3);
+                    break;
             }
         }
-        if(baseEvent instanceof ShareInformationEvent){
+        if (baseEvent instanceof ShareInformationEvent) {
             ShareInformationEvent shareInformationEvent = (ShareInformationEvent) baseEvent;
             FastInformationModel model = shareInformationEvent.getInformationModel();
             initSharePopWindow(model);
         }
 
-        if(baseEvent instanceof GetPictureEvent){
+        if (baseEvent instanceof GetPictureEvent) {
             GetPictureEvent getPictureEvent = (GetPictureEvent) baseEvent;
             ImageView iv = getPictureEvent.getIv();
             canLoadImage = AndroidLifecycleUtils.canLoadImage(iv.getContext());
             PhotoPicker.builder()
-                    .setPhotoCount(1)
+                    .setPhotoCount(3)
                     .start(MainActivity.this);
         }
 
@@ -221,7 +306,8 @@ public class MainActivity extends BaseActivity {
 
     }
 
-    @Override protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK &&
                 (requestCode == PhotoPicker.REQUEST_CODE || requestCode == PhotoPreview.REQUEST_CODE)) {
@@ -235,15 +321,19 @@ public class MainActivity extends BaseActivity {
             if (photos != null) {
                 //selectedPhotos.addAll(photos);
             }
-            Log.i("canload","-----" + canLoadImage);
-            Uri uri = Uri.fromFile(new File(photos.get(0)));
-            EventBus.getDefault().post(new GetPictureEvent(uri));
+            LogUtils.i("canload", "-----" + canLoadImage);
+            List<Uri> uriList = new ArrayList<>();
+            for(int i = 0;i < photos.size();i++){
+                uriList.add(Uri.fromFile(new File(photos.get(i))));
+            }
+            //Uri uri = Uri.fromFile(new File(photos.get(0)));
+            EventBus.getDefault().post(new GetPictureEvent(uriList));
             if (canLoadImage) {
                 final RequestOptions options = new RequestOptions();
                 options.centerCrop()
                         .placeholder(R.drawable.__picker_ic_photo_black_48dp)
                         .error(R.drawable.__picker_ic_broken_image_black_48dp);
-                }
+            }
             //photoAdapter.notifyDataSetChanged();
         }
     }
@@ -252,13 +342,13 @@ public class MainActivity extends BaseActivity {
     /**
      * 初始化fragment
      */
-    private void initFragment() {
-         homeFragment = new HomeFragment();
-         informationFragment = new InformationFragment();
-         marketFragmant = new MarketFragmant();
-         projectFragment = new ProjectFragment();
+    public void initFragment() {
+        mFragmentList.clear();
+        homeFragment = new HomeFragment();
+        informationFragment = new InformationFragment();
+        marketFragmant = new MarketFragmant();
         newProjectFragment = new NewProjectFragment();
-         userFragment = new UserFragment();
+        userFragment = new UserFragment();
         mFragmentList.add(homeFragment);
         mFragmentList.add(informationFragment);
         mFragmentList.add(marketFragmant);
@@ -267,14 +357,15 @@ public class MainActivity extends BaseActivity {
         vpContent.setAdapter(new FragmentAdapter(getSupportFragmentManager(), mFragmentList));
         vpContent.setOffscreenPageLimit(5);//设置缓存页面的个数
         bbl.setViewPager(vpContent);
+        initListener();
     }
 
     public void showCenterPopupWindow() {
         View contentView = LayoutInflater.from(this).inflate(R.layout.popup_layout, null);
         final PopupWindow popupWindow = new PopupWindow(contentView, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        TextView tvTitle = (TextView)contentView.findViewById(R.id.tv_title);
-        TextView tvConfirm = (TextView)contentView.findViewById(R.id.tv_confirm);
-        TextView tvCancel = (TextView)contentView.findViewById(R.id.tv_cancel);
+        TextView tvTitle = (TextView) contentView.findViewById(R.id.tv_title);
+        TextView tvConfirm = (TextView) contentView.findViewById(R.id.tv_confirm);
+        TextView tvCancel = (TextView) contentView.findViewById(R.id.tv_cancel);
         tvTitle.setText("标为已读");
         tvConfirm.setText("置顶公众号");
         tvCancel.setText("取消关注");
@@ -319,7 +410,7 @@ public class MainActivity extends BaseActivity {
         //设置PopupWindow进入和退出动画
         popupWindow.setAnimationStyle(R.style.mypopwindow_anim_style);
         // 设置PopupWindow显示在中间
-        popupWindow.showAtLocation(MainActivity.this.getWindow().getDecorView(),Gravity.CENTER,0,0);
+        popupWindow.showAtLocation(MainActivity.this.getWindow().getDecorView(), Gravity.CENTER, 0, 0);
 
     }
 
@@ -334,4 +425,27 @@ public class MainActivity extends BaseActivity {
     }
 
 
+
+    /*显示fragment*/
+    private void showFragment(BaseFragment fragment, String tag) {
+
+        /*先判断fragment是否被添加过*/
+        if (!fragment.isAdded()) {
+            getSupportFragmentManager().beginTransaction().add(R.id.layout_main, fragment, tag).commit();
+            mFragmentList.add(fragment);
+        }
+
+        /*不可见*/
+        if (!fragment.isVisible()) {
+            for (BaseFragment frag : mFragmentList) {
+                if (frag != fragment) {
+                /*先隐藏其他fragment*/
+                    getSupportFragmentManager().beginTransaction().hide(frag).commit();
+                }
+            }
+            getSupportFragmentManager().beginTransaction().show(fragment).commit();
+        }
+
+
+    }
 }

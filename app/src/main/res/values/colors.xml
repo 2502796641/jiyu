@@ -9,7 +9,6 @@
     <color name="tab_gb">#F3F5F4</color>
     <color name="tab_normal_color">#515051</color>
     <color name="tab_selected_color">#D33D3C</color>
-
     <color name="unreadTextColor">#00ff00</color>
     <color name="msgTextColor">#00ff00</color>
 
@@ -28,9 +27,6 @@
     <color name="publicity_text_color">#000</color>
     <color name="publicity_background_color">#fff</color>
     <color name="draw_money_color">#F5F5F5</color>
-
-
-
 
     <color name="colorBlack2">#15151F</color>
     <color name="color_deep_blue">#0D123C</color>

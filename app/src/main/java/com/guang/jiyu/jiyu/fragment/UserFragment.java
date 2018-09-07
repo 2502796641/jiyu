@@ -30,19 +30,30 @@ import com.guang.jiyu.jiyu.event.UserInfoEvent;
 import com.guang.jiyu.jiyu.model.AirCandyModel;
 import com.guang.jiyu.jiyu.model.FastInformationModel;
 import com.guang.jiyu.jiyu.model.UserInfoModel;
+import com.guang.jiyu.jiyu.net.OkHttpManage;
 import com.guang.jiyu.jiyu.utils.ActivityUtils;
+import com.guang.jiyu.jiyu.utils.LinkParams;
 import com.guang.jiyu.jiyu.utils.TitleBarUtils;
 import com.guang.jiyu.jiyu.utils.ToastUtils;
 import com.guang.jiyu.jiyu.utils.UserInfoUtils;
 import com.guang.jiyu.jiyu.widget.TitleBar;
 
 import org.greenrobot.eventbus.Subscribe;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import de.hdodenhof.circleimageview.CircleImageView;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 /**
  * Created by admin on 2018/6/19.
@@ -112,7 +123,9 @@ public class UserFragment extends BaseFragment {
     public void onResume() {
         super.onResume();
         initUserData();
+
     }
+
 
     /**
      * 判断用户是否登录

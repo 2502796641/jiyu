@@ -24,6 +24,7 @@ import com.guang.jiyu.jiyu.model.InformationModel;
 import com.guang.jiyu.jiyu.net.OkHttpManage;
 import com.guang.jiyu.jiyu.utils.ActivityUtils;
 import com.guang.jiyu.jiyu.utils.LinkParams;
+import com.guang.jiyu.jiyu.utils.LogUtils;
 import com.guang.jiyu.jiyu.utils.ToastUtils;
 import com.guang.jiyu.jiyu.widget.PullToRefreshLayout.BaseRefreshListener;
 import com.guang.jiyu.jiyu.widget.PullToRefreshLayout.PullToRefreshLayout;
@@ -141,14 +142,14 @@ public class InfoFragment extends BaseFragment {
                 OkHttpManage.getClient(getContext()).newCall(request).enqueue(new Callback() {
                     @Override
                     public void onFailure(Call call, IOException e) {
-                        Log.d("onFailure-----", e.toString());
+                        LogUtils.d("onFailure-----", e.toString());
                         handler.sendEmptyMessage(Contants.INFO_GET_FAILURE);
                     }
 
                     @Override
                     public void onResponse(Call call, Response response) throws IOException {
                         String result = response.body().string();
-                        Log.d("onResponse-----", result);
+                        LogUtils.d("onResponse-----", result);
                         try {
                             JSONObject object = new JSONObject(result);
                             //有数据
@@ -168,9 +169,6 @@ public class InfoFragment extends BaseFragment {
                                     String html = model.getContent();
                                     Document doc = Jsoup.parseBodyFragment(html);
                                     model.data = doc.toString();
-                                    Element body = doc.body();
-
-
                                     list.add(model);
                                 }
                                 m = new Message();
@@ -203,7 +201,7 @@ public class InfoFragment extends BaseFragment {
         }
 
         private void setRefreshListen() {
-            Log.d("setRefreshListen-----", "----------------------------");
+            LogUtils.d("setRefreshListen-----", "----------------------------");
             refreshLayout.autoRefresh();
             refreshLayout.setRefreshListener(new BaseRefreshListener() {
                 @Override
@@ -213,7 +211,8 @@ public class InfoFragment extends BaseFragment {
 
                 @Override
                 public void loadMore() {
-                    initInfomation(pageNum++);
+                    pageNum = pageNum + 1;
+                    initInfomation(pageNum);
                 }
             });
         }

@@ -1,178 +1,259 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:stv="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:stv="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
+
     <com.guang.jiyu.jiyu.widget.TitleBar
         android:id="@+id/titlebar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
+
     <ScrollView
+        android:id="@+id/scroll_parent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/gray_2">
+        android:background="@color/gray_2"
+        android:scrollbars="none">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/size_10dp"
                 android:text="发币方"
                 android:textColor="@color/colorBlack"
-                android:layout_margin="@dimen/size_10dp"/>
+                android:textSize="@dimen/text_16sp" />
+
             <EditText
                 android:id="@+id/et_issue_currency"
                 android:layout_width="fill_parent"
                 android:layout_height="@dimen/size_28dp"
-                android:paddingLeft="@dimen/size_5dp"
-                android:background="@drawable/bg_edittext"
                 android:layout_marginLeft="@dimen/size_15dp"
                 android:layout_marginRight="@dimen/size_15dp"
-                android:textColorHint="#AAAAAA"
-                android:textSize="@dimen/text_14sp"
-                android:singleLine="true"
+                android:background="@drawable/bg_edittext"
                 android:hint="  请输入发币方"
-                />
+                android:paddingLeft="@dimen/size_5dp"
+                android:singleLine="true"
+                android:textColorHint="#AAAAAA"
+                android:textSize="@dimen/text_14sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/size_10dp"
+                android:layout_marginLeft="@dimen/size_10dp"
                 android:text="广播"
+
                 android:textColor="@color/colorBlack"
-                android:layout_margin="@dimen/size_10dp"/>
+                android:textSize="@dimen/text_16sp" />
+
+            <EditText
+                android:id="@+id/et_issue_currency_content"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_120dp"
+                android:layout_marginLeft="@dimen/size_15dp"
+                android:layout_marginRight="@dimen/size_15dp"
+                android:background="@drawable/bg_edittext"
+                android:gravity="top"
+                android:lines="10"
+                android:scrollbars="vertical"
+                android:textColorHint="#AAAAAA"
+                android:textSize="@dimen/text_14sp" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_180dp"
+                android:layout_height="@dimen/size_200dp"
                 android:layout_marginLeft="@dimen/size_15dp"
                 android:layout_marginRight="@dimen/size_15dp"
                 android:background="@color/white">
-                <ImageView
-                    android:id="@+id/iv_upload"
-                    android:layout_width="@dimen/size_200dp"
-                    android:layout_height="@dimen/size_120dp"
-                    android:layout_margin="@dimen/size_10dp"/>
+
+                <ScrollView
+                    android:id="@+id/scroll_img"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/iv_add_picture">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_above="@+id/iv_add_picture"
+                        android:background="@drawable/bg_edittext"
+                        android:orientation="vertical"
+
+                        >
+
+                        <ImageView
+                            android:id="@+id/iv_upload"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/size_140dp"
+                            android:layout_margin="@dimen/size_10dp"
+                            android:visibility="gone" />
+
+                        <ImageView
+                            android:id="@+id/iv_upload2"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/size_140dp"
+                            android:layout_margin="@dimen/size_10dp"
+                            android:visibility="gone"
+
+                            />
+
+                        <ImageView
+                            android:id="@+id/iv_upload3"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/size_140dp"
+                            android:layout_margin="@dimen/size_10dp"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+
+                </ScrollView>
+
                 <ImageView
                     android:id="@+id/iv_add_picture"
                     android:layout_width="@dimen/size_30dp"
                     android:layout_height="@dimen/size_30dp"
-                    android:src="@mipmap/icon_add_picture"
                     android:layout_alignParentBottom="true"
-                    android:layout_margin="@dimen/size_10dp"/>
+                    android:layout_margin="@dimen/size_10dp"
+                    android:src="@mipmap/icon_add_picture" />
             </RelativeLayout>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/size_10dp"
                 android:text="广播开始日期"
                 android:textColor="@color/colorBlack"
-                android:layout_margin="@dimen/size_10dp"
-                android:visibility="gone"/>
+                android:visibility="gone" />
+
             <EditText
                 android:id="@+id/et_boardcast_start_date"
                 android:layout_width="fill_parent"
                 android:layout_height="@dimen/size_30dp"
-                android:background="@drawable/bg_edittext"
-                android:paddingLeft="@dimen/size_5dp"
                 android:layout_marginLeft="@dimen/size_15dp"
                 android:layout_marginRight="@dimen/size_15dp"
+                android:background="@drawable/bg_edittext"
+                android:hint=" 请输入广播开始日期"
+                android:paddingLeft="@dimen/size_5dp"
+                android:singleLine="true"
                 android:textColorHint="#AAAAAA"
                 android:textSize="@dimen/text_14sp"
-                android:singleLine="true"
-                android:hint=" 请输入广播开始日期"
-                android:visibility="gone"
-                />
+                android:visibility="gone" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/size_10dp"
+                android:layout_marginLeft="@dimen/size_10dp"
                 android:text="广播开始时间"
+
                 android:textColor="@color/colorBlack"
-                android:layout_margin="@dimen/size_10dp"/>
+                android:textSize="@dimen/text_16sp" />
+
             <TextView
                 android:id="@+id/tv_boardcast_start_time"
                 android:layout_width="fill_parent"
                 android:layout_height="@dimen/size_30dp"
-                android:gravity="center_vertical"
-                android:background="@drawable/bg_edittext"
-                android:paddingLeft="@dimen/size_5dp"
                 android:layout_marginLeft="@dimen/size_15dp"
                 android:layout_marginRight="@dimen/size_15dp"
-                android:textColorHint="#AAAAAA"
-                android:textSize="@dimen/text_14sp"
-                android:singleLine="true"
+                android:background="@drawable/bg_edittext"
+                android:gravity="center_vertical"
                 android:hint=" 请输入广播开始时间"
-                />
+                android:paddingLeft="@dimen/size_5dp"
+                android:singleLine="true"
+                android:textColorHint="#AAAAAA"
+                android:textSize="@dimen/text_14sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/size_10dp"
+                android:layout_marginTop="@dimen/size_10dp"
                 android:text="选择图标"
+
                 android:textColor="@color/colorBlack"
-                android:layout_margin="@dimen/size_10dp"/>
+                android:textSize="@dimen/text_16sp" />
 
             <com.guang.jiyu.jiyu.widget.MyGridView
                 android:id="@+id/grid"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/size_10dp"
-                android:numColumns="4"
-                android:listSelector="#0000"
                 android:horizontalSpacing="2dp"
-                android:verticalSpacing="@dimen/size_10dp"
-
-                />
+                android:listSelector="#0000"
+                android:numColumns="4"
+                android:verticalSpacing="@dimen/size_10dp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/size_10dp"
+                android:layout_marginTop="@dimen/size_10dp"
                 android:text="发送币种"
                 android:textColor="@color/colorBlack"
-                android:layout_marginTop="@dimen/size_10dp"
-                android:layout_marginLeft="@dimen/size_10dp"/>
+                android:textSize="@dimen/text_16sp" />
 
-            <RadioGroup
+            <com.guang.jiyu.jiyu.widget.MyGridView
+                android:id="@+id/grid_currency"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_margin="@dimen/size_10dp"
+                android:listSelector="#0000"
+                android:numColumns="4"
+                android:verticalSpacing="@dimen/size_10dp" />
+
+            <RadioGroup
+                android:id="@+id/rg_currency"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <RadioButton
                     android:id="@+id/rb_currency_mbtc"
                     style="@style/Filter_RadioButton"
-                    android:text="MBTC"
-                    android:layout_marginRight="@dimen/size_10dp"
                     android:layout_marginLeft="@dimen/size_10dp"
-                    />
+                    android:layout_marginRight="@dimen/size_10dp"
+                    android:text="MBTC" />
 
                 <RadioButton
                     android:id="@+id/rb_currency_gxs"
                     style="@style/Filter_RadioButton"
-                    android:text="GXS"
-                    />
+                    android:text="JYCJ" />
 
                 <RadioButton
                     android:id="@+id/rb_currency_dmc"
                     style="@style/Filter_RadioButton"
-                    android:text="DMC"
-                    android:layout_marginLeft="@dimen/size_10dp"/>
+                    android:layout_marginLeft="@dimen/size_10dp"
+                    android:text="DMC" />
 
                 <RadioButton
                     android:id="@+id/rb_currency_cero"
                     style="@style/Filter_RadioButton"
-                    android:text="CERO"
-                    android:layout_marginLeft="@dimen/size_10dp"/>
+                    android:layout_marginLeft="@dimen/size_10dp"
+                    android:text="CERO" />
 
             </RadioGroup>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/size_10dp"
+                android:layout_marginTop="@dimen/size_10dp"
+
                 android:text="发送对象"
                 android:textColor="@color/colorBlack"
-                android:layout_marginTop="@dimen/size_10dp"
-                android:layout_marginLeft="@dimen/size_10dp"/>
+                android:textSize="@dimen/text_16sp" />
 
             <RadioGroup
+                android:id="@+id/rg_target"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -180,33 +261,35 @@
                 <RadioButton
                     android:id="@+id/rb_target_register"
                     style="@style/Filter_RadioButton"
-                    android:text="注册用户"
-                    android:layout_marginRight="@dimen/size_10dp"
                     android:layout_marginLeft="@dimen/size_10dp"
-                    />
+                    android:layout_marginRight="@dimen/size_10dp"
+                    android:text="注册用户" />
 
                 <RadioButton
                     android:id="@+id/rb_target_idauthentication"
                     style="@style/Filter_RadioButton"
-                    android:text="身份认证"
-                    />
+                    android:text="身份认证" />
 
                 <RadioButton
                     android:id="@+id/rb_target_token"
                     style="@style/Filter_RadioButton"
-                    android:text="代币"
-                    android:layout_marginLeft="@dimen/size_10dp"/>
+                    android:layout_marginLeft="@dimen/size_10dp"
+                    android:text="代币" />
 
             </RadioGroup>
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/size_10dp"
+                android:layout_marginTop="@dimen/size_10dp"
+
                 android:text="发送限制"
                 android:textColor="@color/colorBlack"
-                android:layout_marginTop="@dimen/size_10dp"
-                android:layout_marginLeft="@dimen/size_10dp"/>
+                android:textSize="@dimen/text_16sp" />
 
             <RadioGroup
+                android:id="@+id/rg_restrict"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
@@ -214,181 +297,195 @@
                 <RadioButton
                     android:id="@+id/rb_restrict_none"
                     style="@style/Filter_RadioButton"
-                    android:text="注册用户"
-                    android:layout_marginRight="@dimen/size_10dp"
                     android:layout_marginLeft="@dimen/size_10dp"
-                    />
+                    android:layout_marginRight="@dimen/size_10dp"
+                    android:text="无" />
 
                 <RadioButton
                     android:id="@+id/rb_restrict_need_boardcast"
-                    style="@style/Filter_RadioButton"
-                    android:text="身份认证"
-                    />
+                    style="@style/Filter_RadioButton_80dp"
+                    android:text="需阅读广播" />
 
             </RadioGroup>
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="@dimen/size_10dp"
+                android:layout_marginLeft="@dimen/size_10dp"
                 android:text="发送量"
+
                 android:textColor="@color/colorBlack"
-                android:layout_margin="@dimen/size_10dp"/>
+                android:textSize="@dimen/text_16sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/size_30dp"
-                android:orientation="horizontal"
+                android:layout_marginLeft="@dimen/size_10dp"
                 android:gravity="center_vertical"
-                android:layout_marginLeft="@dimen/size_10dp">
+                android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="每人可领"/>
+                    android:text="每人可领" />
 
                 <EditText
                     android:id="@+id/et_cantake_count"
                     android:layout_width="fill_parent"
                     android:layout_height="@dimen/size_30dp"
-                    android:background="@drawable/bg_edittext"
                     android:layout_marginLeft="@dimen/size_15dp"
                     android:layout_marginRight="@dimen/size_15dp"
-                    android:textColorHint="#AAAAAA"
-                    android:textSize="@dimen/text_14sp"
-                    android:singleLine="true"
+                    android:background="@drawable/bg_edittext"
                     android:hint=" 请输入每人可领个数"
                     android:paddingLeft="@dimen/size_5dp"
-                    />
+                    android:singleLine="true"
+                    android:textColor="@color/theme_color"
+                    android:textColorHint="#AAAAAA"
+                    android:textSize="@dimen/text_14sp" />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/size_30dp"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
                 android:layout_marginLeft="@dimen/size_10dp"
-                android:layout_marginTop="@dimen/size_10dp">
+                android:layout_marginTop="@dimen/size_10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="可领人数"/>
+                    android:text="可领人数" />
 
                 <EditText
                     android:id="@+id/et_cantake_people_count"
                     android:layout_width="fill_parent"
                     android:layout_height="@dimen/size_30dp"
-                    android:background="@drawable/bg_edittext"
                     android:layout_marginLeft="@dimen/size_15dp"
                     android:layout_marginRight="@dimen/size_15dp"
-                    android:textColorHint="#AAAAAA"
-                    android:textSize="@dimen/text_14sp"
-                    android:singleLine="true"
+                    android:background="@drawable/bg_edittext"
                     android:hint=" 请输入可领人数"
                     android:paddingLeft="@dimen/size_5dp"
+                    android:singleLine="true"
+                    android:textColor="@color/theme_color"
+                    android:textColorHint="#AAAAAA"
+                    android:textSize="@dimen/text_14sp"
 
                     />
             </LinearLayout>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/size_30dp"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
                 android:layout_marginLeft="@dimen/size_10dp"
-                android:layout_marginTop="@dimen/size_10dp">
+                android:layout_marginTop="@dimen/size_10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="发送总量"/>
+                    android:text="发送总量" />
 
                 <EditText
                     android:id="@+id/et_issue_sum"
                     android:layout_width="fill_parent"
                     android:layout_height="@dimen/size_30dp"
-                    android:background="@drawable/bg_edittext"
                     android:layout_marginLeft="@dimen/size_15dp"
                     android:layout_marginRight="@dimen/size_15dp"
-                    android:textColorHint="#AAAAAA"
-                    android:textSize="@dimen/text_14sp"
-                    android:singleLine="true"
+                    android:background="@drawable/bg_edittext"
                     android:hint=" 请输入发送总量"
                     android:paddingLeft="@dimen/size_5dp"
-                    />
+                    android:singleLine="true"
+                    android:textColor="@color/theme_color"
+                    android:textColorHint="#AAAAAA"
+                    android:textSize="@dimen/text_14sp" />
             </LinearLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="*可仅设置其中两项"
-                android:textSize="@dimen/text_12sp"
-                android:layout_marginTop="@dimen/size_5dp"
                 android:layout_marginLeft="@dimen/size_100dp"
-                />
+                android:layout_marginTop="@dimen/size_5dp"
+                android:text="*可仅设置其中两项"
+                android:textSize="@dimen/text_12sp" />
 
             <RelativeLayout
+                android:id="@+id/rl_pay"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/size_10dp"
-                android:layout_marginTop="@dimen/size_30dp">
+                android:layout_marginTop="@dimen/size_30dp"
+                android:visibility="gone">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/tv_all_send"
                     android:text="合计发送："
-                    android:textColor="@color/colorBlack"
-                    android:layout_toLeftOf="@+id/tv_all_send"/>
+                    android:textColor="@color/colorBlack" />
 
                 <TextView
                     android:id="@+id/tv_all_send"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
                     android:text="20 * 10 = 100"
-                    android:textColor="@color/colorBlack"
-                    android:layout_alignParentRight="true"/>
+                    android:textColor="@color/colorBlack" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="手续费："
-                    android:textColor="@color/colorBlack"
+                    android:layout_alignTop="@+id/tv_sevice_charge"
                     android:layout_toLeftOf="@+id/tv_sevice_charge"
-                    android:layout_alignTop="@+id/tv_sevice_charge"/>
+                    android:text="手续费："
+                    android:textColor="@color/colorBlack" />
+
                 <TextView
                     android:id="@+id/tv_sevice_charge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2000 * 0.1 = 200"
-                    android:textColor="@color/colorBlack"
                     android:layout_alignParentRight="true"
+                    android:layout_below="@+id/tv_all_send"
                     android:layout_marginTop="@dimen/size_5dp"
-                    android:layout_below="@+id/tv_all_send"/>
+                    android:text="2000 * 0.1 = 200"
+                    android:textColor="@color/colorBlack" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="实际支付："
-                    android:textColor="@color/colorBlack"
+                    android:layout_alignTop="@+id/tv_actual_pay"
                     android:layout_toLeftOf="@+id/tv_actual_pay"
-                    android:layout_alignTop="@+id/tv_actual_pay"/>
+                    android:text="实际支付："
+                    android:textColor="@color/colorBlack" />
+
                 <TextView
                     android:id="@+id/tv_actual_pay"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="2000 * 10 = 20000"
-                    android:textColor="@color/colorBlack"
                     android:layout_alignParentRight="true"
+                    android:layout_below="@+id/tv_sevice_charge"
                     android:layout_marginTop="@dimen/size_5dp"
-                    android:layout_below="@+id/tv_sevice_charge"/>
+                    android:text="2000 * 10 = 20000"
+                    android:textColor="@color/colorBlack" />
             </RelativeLayout>
 
 
             <com.allen.library.SuperButton
                 android:id="@+id/btn_pay"
-                android:layout_gravity="center"
-                android:layout_marginBottom="@dimen/size_30dp"
                 android:layout_width="@dimen/size_280dp"
                 android:layout_height="@dimen/size_40dp"
-                stv:sCornersRadius="@dimen/size_5dp"
-                stv:sSolidColor="@color/theme_color"
-                android:text="支付"
-                android:textSize="@dimen/text_16sp"
-                android:textColor="@color/white"
+                android:layout_below="@id/ll_pwd"
                 android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/size_30dp"
                 android:layout_marginTop="@dimen/size_30dp"
-                android:layout_below="@id/ll_pwd"/>
+                android:text="支付"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_16sp"
+                stv:sCornersRadius="@dimen/size_5dp"
+                stv:sSolidColor="@color/theme_color" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

@@ -14,17 +14,21 @@ import android.widget.Toast;
 import com.allen.library.SuperButton;
 import com.guang.jiyu.R;
 import com.guang.jiyu.base.BaseActivity;
+import com.guang.jiyu.base.BaseEvent;
 import com.guang.jiyu.base.Contants;
+import com.guang.jiyu.jiyu.event.RegisterSuccessEvent;
 import com.guang.jiyu.jiyu.event.UserInfoEvent;
 import com.guang.jiyu.jiyu.model.UserInfoModel;
 import com.guang.jiyu.jiyu.net.OkHttpManage;
 import com.guang.jiyu.jiyu.utils.ActivityUtils;
 import com.guang.jiyu.jiyu.utils.LinkParams;
+import com.guang.jiyu.jiyu.utils.LogUtils;
 import com.guang.jiyu.jiyu.utils.MyTextUtils;
 import com.guang.jiyu.jiyu.utils.ToastUtils;
 import com.guang.jiyu.jiyu.utils.UserInfoUtils;
 
 import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -104,11 +108,21 @@ public class LoginActivity extends BaseActivity {
         }
     }
 
+    @Subscribe
+    public void onEventMainThread(BaseEvent baseEvent) {
+        if(baseEvent instanceof RegisterSuccessEvent){
+            RegisterSuccessEvent event = (RegisterSuccessEvent) baseEvent;
+            etMobile.setText(event.getAccount());
+            etPwd.setText(event.getPwd());
+        }
+    }
+
     private void doLogin() {
-        Log.d("doLogin-----",mobileNo +"--" + loginPwd);
+        LogUtils.d("doLogin-----",mobileNo +"--" + loginPwd);
         MultipartBody.Builder mbody=new MultipartBody.Builder().setType(MultipartBody.FORM);
         mbody.addFormDataPart("mobileNo", mobileNo);
         mbody.addFormDataPart("loginPwd", MyTextUtils.md5Password(loginPwd));
+        mbody.addFormDataPart("uuid", UserInfoUtils.getString(this,Contants.USER_UUID));
         RequestBody requestBody =mbody.build();
         final Request request = new Request.Builder()
                 //.addHeader("Content-Type",)
@@ -119,14 +133,14 @@ public class LoginActivity extends BaseActivity {
         OkHttpManage.getClient(this).newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                Log.d("login-----",e.toString());
+                LogUtils.d("login-----",e.toString());
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String result = response.body().string();
 
-                Log.d("result-----",result + "----" + response.headers().get("authorization"));
+                LogUtils.d("result-----",result + "----" + response.headers().get("authorization"));
                 try {
                     JSONObject object = new JSONObject(result);
                     if("200".equals(object.getString("code"))){
@@ -140,7 +154,6 @@ public class LoginActivity extends BaseActivity {
                         UserInfoUtils.saveString(LoginActivity.this,Contants.USER_PWD,loginPwd);
                         UserInfoUtils.saveString(LoginActivity.this,Contants.AUTHORIZATION,response.headers().get("authorization"));
                         UserInfoUtils.saveInt(LoginActivity.this,Contants.USER_ID,model.userId);
-
                         Message m = new Message();
                         m.what = Contants.USER_LOGIN_SUCCESS;
                         m.obj = model;

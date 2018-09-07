@@ -8,8 +8,9 @@ import com.guang.jiyu.base.BaseModel;
 
 public class WalletModel extends BaseModel{
     public int walletId;
-    public int mbtc;
+    public Double mbtc;
     public int status;
+    public String currency;
 
     public int getWalletId() {
         return walletId;
@@ -19,11 +20,11 @@ public class WalletModel extends BaseModel{
         this.walletId = walletId;
     }
 
-    public int getMbtc() {
+    public Double getMbtc() {
         return mbtc;
     }
 
-    public void setMbtc(int mbtc) {
+    public void setMbtc(Double mbtc) {
         this.mbtc = mbtc;
     }
 
@@ -33,5 +34,13 @@ public class WalletModel extends BaseModel{
 
     public void setStatus(int status) {
         this.status = status;
+    }
+
+    public String getCurrency() {
+        return currency;
+    }
+
+    public void setCurrency(String currency) {
+        this.currency = currency;
     }
 }

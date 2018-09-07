@@ -17,6 +17,7 @@ import com.guang.jiyu.base.Contants;
 import com.guang.jiyu.jiyu.net.OkHttpManage;
 import com.guang.jiyu.jiyu.utils.ActivityUtils;
 import com.guang.jiyu.jiyu.utils.LinkParams;
+import com.guang.jiyu.jiyu.utils.LogUtils;
 import com.guang.jiyu.jiyu.utils.MyTextUtils;
 import com.guang.jiyu.jiyu.utils.TitleBarUtils;
 import com.guang.jiyu.jiyu.utils.ToastUtils;
@@ -131,16 +132,16 @@ public class ChangePwdActivity extends BaseActivity {
                 .post(requestBody)
                 //取出本地保存的sessionId
                 .build();
-        Log.d("-----","--"+UserInfoUtils.getString(this,Contants.AUTHORIZATION));
+        LogUtils.d("-----","--"+UserInfoUtils.getString(this,Contants.AUTHORIZATION));
         OkHttpManage.getClient(this).newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                Log.d("resetpwd-----",e.toString());
+                LogUtils.d("resetpwd-----",e.toString());
             }
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String result = response.body().string();
-                Log.d("result-----",result);
+                LogUtils.d("result-----",result);
                 try {
                     JSONObject object = new JSONObject(result);
                     if ("200".equals(object.getString("code"))) {
@@ -178,12 +179,12 @@ public class ChangePwdActivity extends BaseActivity {
         OkHttpManage.getClient(this).newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                Log.d("register-----",e.toString());
+                LogUtils.d("register-----",e.toString());
             }
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String result = response.body().string();
-                Log.d("result-----",result);
+                LogUtils.d("result-----",result);
                 try {
                     JSONObject object = new JSONObject(result);
                     if("200".equals(object.getString("code"))){

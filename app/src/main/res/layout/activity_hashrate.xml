@@ -34,10 +34,11 @@
             android:id="@+id/linearLayout">
 
             <TextView
+                android:id="@+id/tv_all_hashrate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="78956"
+                android:text=""
                 android:textColor="@color/publicity_text_color"
                 android:textSize="@dimen/text_36sp" />
 
@@ -79,7 +80,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="10086"
+                android:text=""
                 android:textSize="@dimen/text_14sp" />
         </LinearLayout>
 
@@ -106,7 +107,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="10"
+                android:text=""
                 android:textSize="@dimen/text_14sp" />
         </LinearLayout>
 

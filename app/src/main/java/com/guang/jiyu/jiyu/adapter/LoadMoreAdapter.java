@@ -96,20 +96,7 @@ public class LoadMoreAdapter extends BaseAdapter {
             stateHolder.tv_name.setText("选项"+datas.get(position));
         }
 
-        if(Contants.TAG_HASHRATE_RECORD.equals(tag)){
-            HashrateHolder hashrateHolder;
-            if(convertView==null){
-                convertView=flater.inflate(R.layout.item_hashrate_record, null);
-                hashrateHolder=new HashrateHolder();
-                hashrateHolder.tv_score = convertView.findViewById(R.id.score);
-                hashrateHolder.tv_time = convertView.findViewById(R.id.tv_time);
-                convertView.setTag(hashrateHolder);
-            }else{
-                hashrateHolder=(HashrateHolder)convertView.getTag();
-            }
 
-            hashrateHolder.tv_time.setText("选项"+datas.get(position));
-        }
 
         if(Contants.TAG_INVITE_REMARK.equals(tag)){
             InviteRemarkHolder inviteRemarkHolder;

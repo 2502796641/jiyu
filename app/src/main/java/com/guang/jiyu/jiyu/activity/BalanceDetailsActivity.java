@@ -20,6 +20,7 @@ import com.guang.jiyu.jiyu.model.BalanceDetailsModel;
 import com.guang.jiyu.jiyu.model.WalletModel;
 import com.guang.jiyu.jiyu.net.OkHttpManage;
 import com.guang.jiyu.jiyu.utils.LinkParams;
+import com.guang.jiyu.jiyu.utils.LogUtils;
 import com.guang.jiyu.jiyu.utils.TitleBarUtils;
 import com.guang.jiyu.jiyu.utils.UserInfoUtils;
 import com.guang.jiyu.jiyu.widget.TitleBar;
@@ -104,14 +105,14 @@ public class BalanceDetailsActivity extends BaseActivity {
         OkHttpManage.getClient(this).newCall(request).enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-                Log.d("register-----", e.toString());
+                LogUtils.d("register-----", e.toString());
                 handler.sendEmptyMessage(Contants.WALLET_GET_FAILURE);
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String result = response.body().string();
-                Log.d("result-----", result);
+                LogUtils.d("result-----", result);
                 try {
                     JSONObject object = new JSONObject(result);
                     if ("200".equals(object.getString("code"))) {

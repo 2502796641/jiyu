@@ -11,6 +11,8 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -65,10 +67,11 @@ public class MyTextUtils {
 
     /**
      * md5加密密码
+     *
      * @param password
      * @return
      */
-    public static String md5Password(String password){
+    public static String md5Password(String password) {
         StringBuffer sb = new StringBuffer();
         // 得到一个信息摘要器
         try {
@@ -94,24 +97,56 @@ public class MyTextUtils {
      * 根据数字返回星期几
      */
 
-    public static String dateForWeek(String num){
-        switch (num){
+    public static String dateForWeek(String num) {
+        switch (num) {
             case "1":
                 return "星期一";
-                case "2":
+            case "2":
                 return "星期二";
-                case "3":
+            case "3":
                 return "星期三";
-                case "4":
+            case "4":
                 return "星期四";
-                case "5":
+            case "5":
                 return "星期五";
-                case "6":
+            case "6":
                 return "星期六";
-                case "7":
+            case "7":
                 return "星期七";
         }
         return num;
+    }
+
+    /**
+     * 判断是否为数字
+     * @param str
+     * @return
+     */
+    public static boolean isNumeric(String str) {
+        for (int i = 0; i < str.length(); i++) {
+            System.out.println(str.charAt(i));
+            if (!Character.isDigit(str.charAt(i))) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * 只保留double小数点后两位
+     * @param d
+     * @return
+     */
+    public static String doubleFormat(Double d){
+        NumberFormat nf = new DecimalFormat("##.##");
+        return nf.format(d);
+    }
+
+    public static boolean isEmpty(String str){
+        if(str.length() == 0 || str == null || "".equals(str) || "null".equals(str)){
+            return true;
+        }
+        return false;
     }
 
 }

@@ -12,6 +12,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
 
 import com.allen.library.SuperButton;
 import com.guang.jiyu.R;
@@ -24,6 +25,7 @@ import com.guang.jiyu.jiyu.model.InformationModel;
 import com.guang.jiyu.jiyu.net.OkHttpManage;
 import com.guang.jiyu.jiyu.utils.ActivityUtils;
 import com.guang.jiyu.jiyu.utils.LinkParams;
+import com.guang.jiyu.jiyu.utils.LogUtils;
 import com.guang.jiyu.jiyu.utils.TitleBarUtils;
 import com.guang.jiyu.jiyu.utils.ToastUtils;
 import com.guang.jiyu.jiyu.utils.UserInfoUtils;
@@ -46,6 +48,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.MultipartBody;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
@@ -68,27 +71,8 @@ public class InformationDetailsActivity extends BaseActivity {
     LVNews ivLoading;
     @BindView(R.id.btn_already_read)
     SuperButton btnAlreadyRead;
-/*    @BindView(R.id.tv_title)
-    TextView tvTitle;
-    @BindView(R.id.tv_source)
-    TextView tvSource;
-    @BindView(R.id.tv_times)
-    TextView tvTimes;
-
-    @BindView(R.id.tv_reading_count)
-    TextView tvReadingCount;
-    @BindView(R.id.iv_collect)
-    ImageView ivCollect;
-    @BindView(R.id.tv_collect_count)
-    TextView tvCollectCount;
-    @BindView(R.id.iv_bite)
-    ImageView ivBite;
-    @BindView(R.id.btn_bite)
-    SuperButton btnBite;
-    @BindView(R.id.tv_content)
-    TextView tvContent;
-    @BindView(R.id.layout_main)
-    LinearLayout layoutMain;*/
+    @BindView(R.id.rl_bottom)
+    RelativeLayout rlBottom;
 
     private InformationModel informationModel;
     private InformationDetailModel informationDetailModel;
@@ -110,6 +94,9 @@ public class InformationDetailsActivity extends BaseActivity {
                         break;
                     case Contants.INFOConnect_SUCCESS:
                         ToastUtils.showToast("收藏成功");
+                        break;
+                    case Contants.INFO_READING_SUCCESS:
+                        ToastUtils.showToast("阅读成功");
                         break;
                 }
             }
@@ -150,6 +137,7 @@ public class InformationDetailsActivity extends BaseActivity {
                 ivLoading.stopAnim();
                 ivLoading.setVisibility(View.GONE);
                 settings.setBlockNetworkImage(false);
+                rlBottom.setVisibility(View.VISIBLE);
             }
         });
 
@@ -185,7 +173,7 @@ public class InformationDetailsActivity extends BaseActivity {
      * 获取文章详情
      */
     private void queryInfoDetails() {
-        ivLoading.setViewColor(getResources().getColor(R.color.gray_3));
+        ivLoading.setViewColor(getResources().getColor(R.color.theme_color));
         ivLoading.startAnim();
         JSONObject object = new JSONObject();
         try {
@@ -199,7 +187,7 @@ public class InformationDetailsActivity extends BaseActivity {
             OkHttpManage.getClient(this).newCall(request).enqueue(new Callback() {
                 @Override
                 public void onFailure(Call call, IOException e) {
-                    Log.d("onFailure-----", e.toString());
+                    LogUtils.d("onFailure-----", e.toString());
                     handler.sendEmptyMessage(Contants.INFODetails_GET_FAILURE);
                 }
 
@@ -317,7 +305,7 @@ public class InformationDetailsActivity extends BaseActivity {
         try {
             object.put("infoId", informationModel.getInfoId());
             object.put("userId", UserInfoUtils.getInt(this, Contants.USER_ID));
-            Log.d("infoId-----userId", informationModel.getInfoId() + "----" + UserInfoUtils.getInt(this, Contants.USER_ID));
+            LogUtils.d("infoId-----userId", informationModel.getInfoId() + "----" + UserInfoUtils.getInt(this, Contants.USER_ID));
             RequestBody requestBody = RequestBody.create(Contants.JSON, object.toString());
             final Request request = new Request.Builder()
                     .url(LinkParams.REQUEST_URL + "/info/addCollection")
@@ -334,7 +322,7 @@ public class InformationDetailsActivity extends BaseActivity {
                 public void onResponse(Call call, Response response) throws IOException {
 
                     String result = response.body().string();
-                    Log.d("addCollection-----", result);
+                    LogUtils.d("addCollection-----", result);
                     try {
                         JSONObject object = new JSONObject(result);
                         if ("200".equals(object.getString("code"))) {
@@ -354,7 +342,7 @@ public class InformationDetailsActivity extends BaseActivity {
         }
     }
 
-    @OnClick({R.id.iv_reading_quentity, R.id.iv_collect,R.id.btn_already_read})
+    @OnClick({R.id.iv_reading_quentity, R.id.iv_collect, R.id.btn_already_read})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_reading_quentity:
@@ -363,8 +351,51 @@ public class InformationDetailsActivity extends BaseActivity {
                 addCollection();
                 break;
             case R.id.btn_already_read:
-                ToastUtils.showToast("already reading");
+                readInformation();
                 break;
         }
+    }
+
+    private void readInformation() {
+        if(!UserInfoUtils.isUserLogin(this)){
+            ToastUtils.showToast("请先登录");
+            ActivityUtils.startActivity(this,LoginActivity.class);
+            return;
+        }
+        MultipartBody.Builder mbody = new MultipartBody.Builder().setType(MultipartBody.FORM);
+        mbody.addFormDataPart("userId", UserInfoUtils.getInt(this, Contants.USER_ID) + "");
+        mbody.addFormDataPart("newsId", informationModel.getInfoId());
+        RequestBody requestBody = mbody.build();
+
+        final Request request = new Request.Builder()
+                .url(LinkParams.REQUEST_URL + "/arith/reading")
+                .addHeader(Contants.AUTHORIZATION, UserInfoUtils.getString(this, Contants.AUTHORIZATION))
+                .post(requestBody)
+                .build();
+
+        OkHttpManage.getClient(this).newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                handler.sendEmptyMessage(Contants.GET_DATA_FAILURE);
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String result = response.body().string();
+                LogUtils.d("/arith/reading-----", result);
+                try {
+                    JSONObject object = new JSONObject(result);
+                    if ("200".equals(object.getString("code"))) {
+                        handler.sendEmptyMessage(Contants.INFO_READING_SUCCESS);
+                    }
+
+                    if("500".equals(object.getString("code"))){
+                        handler.sendEmptyMessage(Contants.GET_DATA_FAILURE);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 }

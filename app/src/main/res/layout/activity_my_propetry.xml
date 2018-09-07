@@ -16,7 +16,7 @@
             android:id="@+id/tv_balance"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="999.9999"
+            android:text="- - - "
             android:textColor="@color/colorBlack"
             android:textSize="@dimen/text_32sp"
             android:layout_marginTop="@dimen/size_30dp"
@@ -26,11 +26,22 @@
             android:id="@+id/tv_currency"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="M  B  T  C"
+            android:text="  -  - "
             android:textSize="@dimen/text_20sp"
             android:textColor="@color/colorBlack"
-            android:layout_marginLeft="@dimen/size_40dp"
+            android:layout_marginLeft="@dimen/size_10dp"
+            android:layout_toRightOf="@+id/tv_balance"
+            android:layout_alignBottom="@+id/tv_balance"/>
+
+        <TextView
+            android:id="@+id/tv_rmb_excharge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_20sp"
+            android:textStyle="bold"
             android:layout_below="@+id/tv_balance"
+            android:layout_alignLeft="@+id/tv_balance"
+            android:layout_marginTop="@dimen/size_10dp"
             />
 
         <LinearLayout
@@ -48,7 +59,6 @@
                 android:layout_height="wrap_content"
                 android:text="明 细"
                 android:textSize="@dimen/text_16sp"/>
-
             <ImageView
                 android:layout_width="@dimen/size_15dp"
                 android:layout_height="@dimen/size_15dp"

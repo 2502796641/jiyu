@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.guang.jiyu.R;
 import com.guang.jiyu.jiyu.model.FastInformationModel;
+import com.guang.jiyu.jiyu.utils.LogUtils;
 
 import java.util.List;
 
@@ -53,7 +54,7 @@ public class FastInfoAdapter extends RecyclerView.Adapter implements View.OnClic
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        Log.d("fastinfo--------",list.get(position).toString());
+        LogUtils.d("fastinfo--------",list.get(position).toString());
         if(holder instanceof WithDateHolder){
             ((WithDateHolder) holder).tv_date.setText(list.get(position).mouths + " " + list.get(position).dayForWeek);
             ((WithDateHolder) holder).tv_title.setText(list.get(position).title);

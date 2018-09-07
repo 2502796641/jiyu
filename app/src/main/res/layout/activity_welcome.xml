@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@mipmap/icon_login_background">
+
+        <ImageView
+            android:layout_width="@dimen/size_240dp"
+            android:layout_height="@dimen/size_130dp"
+            android:src="@mipmap/icon_jiyu_logo_with_txt"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/size_80dp"/>
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

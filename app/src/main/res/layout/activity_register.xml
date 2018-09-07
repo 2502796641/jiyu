@@ -8,6 +8,12 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_240dp"
         android:background="@mipmap/icon_login_background">
+        <ImageView
+            android:layout_width="@dimen/size_200dp"
+            android:layout_height="@dimen/size_100dp"
+            android:src="@mipmap/icon_jiyu_logo_with_txt"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/size_40dp"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -59,7 +65,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/size_40dp"
                     android:theme="@style/MyEditText"
-                    android:hint="@string/string_input_mobile"
+                    android:hint="@string/string_input_verify_code"
                     android:textSize="@dimen/text_14sp"
                     android:paddingLeft="@dimen/size_10dp"
                     android:layout_marginLeft="@dimen/size_5dp"/>
@@ -121,7 +127,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/size_40dp"
                 android:theme="@style/MyEditText"
-                android:hint="@string/string_input_pwd"
+                android:hint="@string/string_input_pwd_again"
                 android:textSize="@dimen/text_14sp"
                 android:paddingLeft="@dimen/size_10dp"
                 android:layout_marginLeft="@dimen/size_5dp"/>
@@ -133,7 +139,7 @@
             android:layout_height="@dimen/size_40dp"
             stv:sCornersRadius="@dimen/size_5dp"
             stv:sSolidColor="@color/theme_color"
-            android:text="@string/string_login"
+            android:text="@string/string_register"
             android:textSize="@dimen/text_16sp"
             android:textColor="@color/white"
             android:layout_centerHorizontal="true"
